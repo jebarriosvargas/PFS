@@ -1,23 +1,23 @@
 project:
-  type: website
+  type: book
   output-dir: docs
 
-website:
+book:
   title: "PFS"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: about.qmd
-        text: Acerca
-      - href: vibra1d.qmd
-        text: Vibraciones en una cadena
+  favicon: logoJEBV.png
+  twitter-card: true
+  chapters:
+    - href: index.qmd
+      text: Home
+    - href: about.qmd
+      text: Acerca
+    - href: vibra1d.qmd
+      text: Vibraciones en una cadena
 
 format:
   html:
-    theme: cosmo
+    theme: minty
     css: styles.css
-    toc: true
 
 
 
