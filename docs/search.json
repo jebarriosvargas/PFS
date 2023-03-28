@@ -16,8 +16,64 @@
   {
     "objectID": "vibra1d.html",
     "href": "vibra1d.html",
-    "title": "3  Cadena Unidimensional",
+    "title": "5  Cadena Unidimensional",
     "section": "",
     "text": "from pylab import *\n\nt   = 0; κ = 1; m = 1; a = 1; A = 0.2\nnmx = 10 \nn   = arange(-nmx,nmx)\nxeq = n*a\nyeq = zeros_like(xeq)\n#######\nk1   = 0.2*pi/a\nk2   = 0.5*pi/a+2*pi/a\n#######\nω1   = sqrt(4*κ/m) * abs( sin(k1*a/2) )\nω2   = sqrt(4*κ/m) * abs( sin(k2*a/2) )\nu1   = A*exp(1J*ω1*t-1J*k1*n*a) # En lugar de δx_n\nu2   = A*exp(1J*ω2*t-1J*k2*n*a) # En lugar de δx_n\ny1   = zeros(len(xeq)) + u1\ny2   = zeros(len(xeq)) + u2\nx    = xeq # + u # δx\nprint(f\"k = {k1:.3f}, {k2:.3f}\")\nprint(f\"ω = {ω1:.3f}, {ω2:.3f}\")\n\nk = 0.628, 7.854\nω = 0.618, 1.414\n\n\n\n\nCode\n# Librería de graficación con plotly.\nimport plotly.graph_objects as go\n\n\nT      = 2*pi/ω1 # periodo\nveces  = 4       # número de periodos\n\n# Posición en el tiempo cero\nt0  = 0\nx0  = xeq\nu10 = A*exp(1J*ω1*t0-1J*k1*n*a)\ny10 = zeros(len(xeq)) + u10\n\n\ntime   = linspace(t0,veces*T,endpoint=False)\n\n\nFrames = []\nfor t in time:\n    u1 = A*exp(1J*ω1*t-1J*k1*n*a)\n    u2 = A*exp(1J*ω2*t-1J*k2*n*a)\n    y1 = zeros(len(xeq)) + u1\n    y2 = zeros(len(xeq)) + u2\n    x  = xeq # + u # + δx\n    Frames.append( go.Frame(data=[ go.Scatter(x=x,\n                                              y=y1.real,\n                                              mode=\"markers\",\n                                              marker=dict(color=\"red\",size=10),\n                                              name=f'time = {t:.2f}') ]) )\n\n\nfig = go.Figure(\n    data = [go.Scatter(x=x0, \n                       y=y10.real,\n                       mode=\"markers\",\n                       marker=dict(color=\"red\",size=10),\n                       name=f'time = {t0:.2f}')],\n    layout = go.Layout(xaxis=dict(range=[-nmx-1, nmx+1], autorange=False),\n                       yaxis=dict(range=[-0.5, 0.5], autorange=False),\n                       showlegend=True,\n                       title=\"Start Title\",\n                       updatemenus=[dict(type    = \"buttons\",\n                                         buttons = [dict(label=\"Play\",\n                                                         method  = \"animate\",\n                                                         args    = [None,\n                                                                    dict(frame       = dict(duration=5,redraw=True), \n                                                                         transition  = dict(duration=4),\n                                                                         fromcurrent = True,\n                                                                         mode        = 'immediate')])])]),\n    frames = Frames\n)\n\nfig.show()"
+  },
+  {
+    "objectID": "pyscf_H2.html",
+    "href": "pyscf_H2.html",
+    "title": "3  Molécula \\(H_2\\)",
+    "section": "",
+    "text": "# Importación de las librerías\n#---\nfrom pylab import * # Librerías numpy,scipy y matplotlib\nimport pyscf        # Librería pyscf\nfrom pyscf import scf\n\n\n4 Geometría de la molécula diatómica \\({\\rm H}_2\\)\n\n\n\nÁtomo\nX[Å]\nY[Å]\nZ[Å]\n\n\n\n\nH\n0.0000\n0.0000\n0.0000\n\n\nH\n0.0000\n0.0000\n0.7414\n\n\n\n\n# Definición de la clase mole (molecule)\n# útil para manipular los parámetros \n# y atributos de las integrales GTO.\nH2 = pyscf.gto.Mole(atom = \"\"\"\n    H 0.0000  0.0000 0.0000\n    H 0.0000  0.0000 0.7414 \n    \"\"\",basis = \"STO-3G\")\n# ¿Qué significa base STO-3G?\n\n# Define la molécula con la geometría \n# y ahora puede calcularse la Energía\nH2 = H2.build()\n\n\n# Define el método de cálculo con la geometría\nrhf = scf.RHF(H2)\n# ¿Qué significa RHF?\n# Restricted Hartree Fock\n\n# Ejecuta el método definido y regresa la \n# Energía convergida.\nrhf.kernel(print=False)\n\n# Las unidades de la energia son Hartree\n# 1 Hartree = 27.211 eV\n\n# Los Hartree son las unidades atomicas de la energia\n\nconverged SCF energy = -1.11668438708534\n\n\n-1.1166843870853405\n\n\n\n\n5 Variación de la geometría\n\nd = 3.0 # angstroms\nH2 = pyscf.gto.Mole(atom = \"\"\"\n    H 0.0000  0.0000 0.0000\n    H 0.0000  0.0000 {0:.4f} \n    \"\"\".format(d),basis = \"STO-3G\")\nH2  = H2.build()\nrhf = scf.RHF(H2)\nrhf.kernel()\n\nconverged SCF energy = -0.656048251145591\n\n\n-0.656048251145591\n\n\n\n\n6 Función que devuelve la energía\n\ndef SCFenergia(d=0.7414):\n  H2 = pyscf.gto.Mole(atom = \"\"\"\n      H 0.0000  0.0000 0.0000\n      H 0.0000  0.0000 {0:.4f} \n      \"\"\".format(d),basis = \"STO-3G\")\n  H2  = H2.build()\n  rhf = scf.RHF(H2)\n  rhf.verbose = 0 \n  SCFe = rhf.kernel()\n  return SCFe\n\n\n# Separación entre átomos de H\nd = linspace(0.4,3.0,301) # angstroms\n\n\n# Evaluación de la Energía\nE = list( map(SCFenergia,d))\n\n\nplot(d,E,'o-')\nxlabel('d [Å]')\nylabel('E [Ha]')\n\nText(0, 0.5, 'E [Ha]')"
+  },
+  {
+    "objectID": "pyscf_H2.html#geometría-de-la-molécula-diatómica-rm-h_2",
+    "href": "pyscf_H2.html#geometría-de-la-molécula-diatómica-rm-h_2",
+    "title": "3  Molécula \\(H_2\\)",
+    "section": "3.1 Geometría de la molécula diatómica \\({\\rm H}_2\\)",
+    "text": "3.1 Geometría de la molécula diatómica \\({\\rm H}_2\\)\n\n\n\nÁtomo\nX[Å]\nY[Å]\nZ[Å]\n\n\n\n\nH\n0.0000\n0.0000\n0.0000\n\n\nH\n0.0000\n0.0000\n0.7414\n\n\n\n\n# Definición de la clase mole (molecule)\n# útil para manipular los parámetros \n# y atributos de las integrales GTO.\nH2 = pyscf.gto.Mole(atom = \"\"\"\n    H 0.0000  0.0000 0.0000\n    H 0.0000  0.0000 0.7414 \n    \"\"\",basis = \"STO-3G\")\n# ¿Qué significa base STO-3G?\n\n# Define la molécula con la geometría \n# y ahora puede calcularse la Energía\nH2 = H2.build()\n\n\n# Define el método de cálculo con la geometría\nrhf = scf.RHF(H2)\n# ¿Qué significa RHF?\n# Restricted Hartree Fock\n\n# Ejecuta el método definido y regresa la \n# Energía convergida.\nrhf.kernel(print=False)\n\n# Las unidades de la energia son Hartree\n# 1 Hartree = 27.211 eV\n\n# Los Hartree son las unidades atomicas de la energia\n\nconverged SCF energy = -1.11668438708534\n\n\n-1.1166843870853405"
+  },
+  {
+    "objectID": "pyscf_H2.html#variación-de-la-geometría",
+    "href": "pyscf_H2.html#variación-de-la-geometría",
+    "title": "3  Molécula \\(H_2\\)",
+    "section": "3.2 Variación de la geometría",
+    "text": "3.2 Variación de la geometría\n\nd = 3.0 # angstroms\nH2 = pyscf.gto.Mole(atom = \"\"\"\n    H 0.0000  0.0000 0.0000\n    H 0.0000  0.0000 {0:.4f} \n    \"\"\".format(d),basis = \"STO-3G\")\nH2  = H2.build()\nrhf = scf.RHF(H2)\nrhf.kernel()\n\nconverged SCF energy = -0.656048251145591\n\n\n-0.656048251145591"
+  },
+  {
+    "objectID": "pyscf_H2.html#función-que-devuelve-la-energía",
+    "href": "pyscf_H2.html#función-que-devuelve-la-energía",
+    "title": "3  Molécula \\(H_2\\)",
+    "section": "3.3 Función que devuelve la energía",
+    "text": "3.3 Función que devuelve la energía\n\ndef SCFenergia(d=0.7414):\n  H2 = pyscf.gto.Mole(atom = \"\"\"\n      H 0.0000  0.0000 0.0000\n      H 0.0000  0.0000 {0:.4f} \n      \"\"\".format(d),basis = \"STO-3G\")\n  H2  = H2.build()\n  rhf = scf.RHF(H2)\n  rhf.verbose = 0 \n  SCFe = rhf.kernel()\n  return SCFe\n\n\n# Separación entre átomos de H\nd = linspace(0.4,3.0,301) # angstroms\n\n\n# Evaluación de la Energía\nE = list( map(SCFenergia,d))\n\n\nplot(d,E,'o-')\nxlabel('d [Å]')\nylabel('E [Ha]')\n\nText(0, 0.5, 'E [Ha]')"
+  },
+  {
+    "objectID": "molecula_H2.html",
+    "href": "molecula_H2.html",
+    "title": "Molécula \\(H_2\\)",
+    "section": "",
+    "text": "# Importación de las librerías\n#---\nfrom pylab import * # Librerías numpy,scipy y matplotlib\nimport pyscf        # Librería pyscf\nfrom pyscf import scf\n\n\n1 Geometría de la molécula diatómica \\({\\rm H}_2\\)\n\n\n\nÁtomo\nX[Å]\nY[Å]\nZ[Å]\n\n\n\n\nH\n0.0000\n0.0000\n0.0000\n\n\nH\n0.0000\n0.0000\n0.7414\n\n\n\n\n# Definición de la clase mole (molecule)\n# útil para manipular los parámetros \n# y atributos de las integrales GTO.\nH2 = pyscf.gto.Mole(atom = \"\"\"\n    H 0.0000  0.0000 0.0000\n    H 0.0000  0.0000 0.7414 \n    \"\"\",basis = \"STO-3G\")\n# ¿Qué significa base STO-3G?\n\n# Define la molécula con la geometría \n# y ahora puede calcularse la Energía\nH2 = H2.build()\n\n\n# Define el método de cálculo con la geometría\nrhf = scf.RHF(H2)\n# ¿Qué significa RHF?\n# Restricted Hartree Fock\n\n# Ejecuta el método definido y regresa la \n# Energía convergida.\nrhf.kernel(print=False)\n\n# Las unidades de la energia son Hartree\n# 1 Hartree = 27.211 eV\n\n# Los Hartree son las unidades atomicas de la energia\n\nconverged SCF energy = -1.11668438708534\n\n\n-1.1166843870853405\n\n\n\n\n2 Variación de la geometría\n\nd = 3.0 # angstroms\nH2 = pyscf.gto.Mole(atom = \"\"\"\n    H 0.0000  0.0000 0.0000\n    H 0.0000  0.0000 {0:.4f} \n    \"\"\".format(d),basis = \"STO-3G\")\nH2  = H2.build()\nrhf = scf.RHF(H2)\nrhf.kernel()\n\nconverged SCF energy = -0.656048251145591\n\n\n-0.656048251145591\n\n\n\n\n3 Función que devuelve la energía\n\ndef SCFenergia(d=0.7414):\n  H2 = pyscf.gto.Mole(atom = \"\"\"\n      H 0.0000  0.0000 0.0000\n      H 0.0000  0.0000 {0:.4f} \n      \"\"\".format(d),basis = \"STO-3G\")\n  H2  = H2.build()\n  rhf = scf.RHF(H2)\n  rhf.verbose = 0 \n  SCFe = rhf.kernel()\n  return SCFe\n\n\n# Separación entre átomos de H\nd = linspace(0.4,3.0,301) # angstroms\n\n\n# Evaluación de la Energía\nE = list( map(SCFenergia,d))\n\n\nplot(d,E,'o-')\nxlabel('d [Å]')\nylabel('E [Ha]')\n\nText(0, 0.5, 'E [Ha]')\n\n\n\n\n\n\nSource: Abrir en colab"
+  },
+  {
+    "objectID": "molecula_H2.html#geometría-de-la-molécula-diatómica-rm-h_2",
+    "href": "molecula_H2.html#geometría-de-la-molécula-diatómica-rm-h_2",
+    "title": "Molécula \\(H_2\\)",
+    "section": "0.1 Geometría de la molécula diatómica \\({\\rm H}_2\\)",
+    "text": "0.1 Geometría de la molécula diatómica \\({\\rm H}_2\\)\n\n\n\nÁtomo\nX[Å]\nY[Å]\nZ[Å]\n\n\n\n\nH\n0.0000\n0.0000\n0.0000\n\n\nH\n0.0000\n0.0000\n0.7414\n\n\n\n\n# Definición de la clase mole (molecule)\n# útil para manipular los parámetros \n# y atributos de las integrales GTO.\nH2 = pyscf.gto.Mole(atom = \"\"\"\n    H 0.0000  0.0000 0.0000\n    H 0.0000  0.0000 0.7414 \n    \"\"\",basis = \"STO-3G\")\n# ¿Qué significa base STO-3G?\n\n# Define la molécula con la geometría \n# y ahora puede calcularse la Energía\nH2 = H2.build()\n\n\n# Define el método de cálculo con la geometría\nrhf = scf.RHF(H2)\n# ¿Qué significa RHF?\n# Restricted Hartree Fock\n\n# Ejecuta el método definido y regresa la \n# Energía convergida.\nrhf.kernel(print=False)\n\n# Las unidades de la energia son Hartree\n# 1 Hartree = 27.211 eV\n\n# Los Hartree son las unidades atomicas de la energia\n\nconverged SCF energy = -1.11668438708534\n\n\n-1.1166843870853405"
+  },
+  {
+    "objectID": "molecula_H2.html#variación-de-la-geometría",
+    "href": "molecula_H2.html#variación-de-la-geometría",
+    "title": "Molécula \\(H_2\\)",
+    "section": "1.1 Variación de la geometría",
+    "text": "1.1 Variación de la geometría\n\nd = 3.0 # angstroms\nH2 = pyscf.gto.Mole(atom = \"\"\"\n    H 0.0000  0.0000 0.0000\n    H 0.0000  0.0000 {0:.4f} \n    \"\"\".format(d),basis = \"STO-3G\")\nH2  = H2.build()\nrhf = scf.RHF(H2)\nrhf.kernel()\n\nconverged SCF energy = -0.656048251145591\n\n\n-0.656048251145591"
+  },
+  {
+    "objectID": "molecula_H2.html#función-que-devuelve-la-energía",
+    "href": "molecula_H2.html#función-que-devuelve-la-energía",
+    "title": "Molécula \\(H_2\\)",
+    "section": "1.2 Función que devuelve la energía",
+    "text": "1.2 Función que devuelve la energía\n\ndef SCFenergia(d=0.7414):\n  H2 = pyscf.gto.Mole(atom = \"\"\"\n      H 0.0000  0.0000 0.0000\n      H 0.0000  0.0000 {0:.4f} \n      \"\"\".format(d),basis = \"STO-3G\")\n  H2  = H2.build()\n  rhf = scf.RHF(H2)\n  rhf.verbose = 0 \n  SCFe = rhf.kernel()\n  return SCFe\n\n\n# Separación entre átomos de H\nd = linspace(0.4,3.0,301) # angstroms\n\n\n# Evaluación de la Energía\nE = list( map(SCFenergia,d))\n\n\nplot(d,E,'o-')\nxlabel('d [Å]')\nylabel('E [Ha]')\n\nText(0, 0.5, 'E [Ha]')"
   }
 ]

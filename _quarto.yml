@@ -11,13 +11,13 @@ book:
       text: Home
     - href: about.qmd
       text: Acerca
-    - href: vibra1d.qmd
-      text: Vibraciones en una cadena
+    - part: "Vibraciones"
+      chapters:
+        - href: molecula_H2.qmd
+          text: "pyscf H2"
+        - vibra1d.qmd
 
 format:
   html:
     theme: minty
     css: styles.css
-
-
-
