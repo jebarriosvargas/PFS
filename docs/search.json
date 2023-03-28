@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Propiedades Físicas de los Sólidos",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Acerca de",
+    "section": "",
+    "text": "Acerca del sitio"
+  },
+  {
+    "objectID": "vibra1d.html",
+    "href": "vibra1d.html",
+    "title": "Cadena Unidimensional",
+    "section": "",
+    "text": "from pylab import *\n\nt   = 0; κ = 1; m = 1; a = 1; A = 0.2\nnmx = 10 \nn   = arange(-nmx,nmx)\nxeq = n*a\nyeq = zeros_like(xeq)\n#######\nk1   = 0.2*pi/a\nk2   = 0.5*pi/a+2*pi/a\n#######\nω1   = sqrt(4*κ/m) * abs( sin(k1*a/2) )\nω2   = sqrt(4*κ/m) * abs( sin(k2*a/2) )\nu1   = A*exp(1J*ω1*t-1J*k1*n*a) # En lugar de δx_n\nu2   = A*exp(1J*ω2*t-1J*k2*n*a) # En lugar de δx_n\ny1   = zeros(len(xeq)) + u1\ny2   = zeros(len(xeq)) + u2\nx    = xeq # + u # δx\nprint(f\"k = {k1:.3f}, {k2:.3f}\")\nprint(f\"ω = {ω1:.3f}, {ω2:.3f}\")\n\nk = 0.628, 7.854\nω = 0.618, 1.414\n\n\n\n\nCode\n# Librería de graficación con plotly.\nimport plotly.graph_objects as go\n\n\nT      = 2*pi/ω1 # periodo\nveces  = 4       # número de periodos\n\n# Posición en el tiempo cero\nt0  = 0\nx0  = xeq\nu10 = A*exp(1J*ω1*t0-1J*k1*n*a)\ny10 = zeros(len(xeq)) + u10\n\n\ntime   = linspace(t0,veces*T,endpoint=False)\n\n\nFrames = []\nfor t in time:\n    u1 = A*exp(1J*ω1*t-1J*k1*n*a)\n    u2 = A*exp(1J*ω2*t-1J*k2*n*a)\n    y1 = zeros(len(xeq)) + u1\n    y2 = zeros(len(xeq)) + u2\n    x  = xeq # + u # + δx\n    Frames.append( go.Frame(data=[ go.Scatter(x=x,\n                                              y=y1.real,\n                                              mode=\"markers\",\n                                              marker=dict(color=\"red\",size=10),\n                                              name=f'time = {t:.2f}') ]) )\n\n\nfig = go.Figure(\n    data = [go.Scatter(x=x0, \n                       y=y10.real,\n                       mode=\"markers\",\n                       marker=dict(color=\"red\",size=10),\n                       name=f'time = {t0:.2f}')],\n    layout = go.Layout(xaxis=dict(range=[-nmx-1, nmx+1], autorange=False),\n                       yaxis=dict(range=[-0.5, 0.5], autorange=False),\n                       showlegend=True,\n                       title=\"Start Title\",\n                       updatemenus=[dict(type    = \"buttons\",\n                                         buttons = [dict(label=\"Play\",\n                                                         method  = \"animate\",\n                                                         args    = [None,\n                                                                    dict(frame       = dict(duration=5,redraw=True), \n                                                                         transition  = dict(duration=4),\n                                                                         fromcurrent = True,\n                                                                         mode        = 'immediate')])])]),\n    frames = Frames\n)\n\nfig.show()"
+  }
+]
