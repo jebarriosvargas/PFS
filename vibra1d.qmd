@@ -1,0 +1,88 @@
+---
+title: "Cadena Unidimensional"
+format: html
+---
+
+```{python}
+from pylab import *
+
+t   = 0; κ = 1; m = 1; a = 1; A = 0.2
+nmx = 10 
+n   = arange(-nmx,nmx)
+xeq = n*a
+yeq = zeros_like(xeq)
+#######
+k1   = 0.2*pi/a
+k2   = 0.5*pi/a+2*pi/a
+#######
+ω1   = sqrt(4*κ/m) * abs( sin(k1*a/2) )
+ω2   = sqrt(4*κ/m) * abs( sin(k2*a/2) )
+u1   = A*exp(1J*ω1*t-1J*k1*n*a) # En lugar de δx_n
+u2   = A*exp(1J*ω2*t-1J*k2*n*a) # En lugar de δx_n
+y1   = zeros(len(xeq)) + u1
+y2   = zeros(len(xeq)) + u2
+x    = xeq # + u # δx
+print(f"k = {k1:.3f}, {k2:.3f}")
+print(f"ω = {ω1:.3f}, {ω2:.3f}")
+```
+
+
+
+```{python}
+#| code-fold: true
+
+# Librería de graficación con plotly.
+import plotly.graph_objects as go
+
+
+T      = 2*pi/ω1 # periodo
+veces  = 4       # número de periodos
+
+# Posición en el tiempo cero
+t0  = 0
+x0  = xeq
+u10 = A*exp(1J*ω1*t0-1J*k1*n*a)
+y10 = zeros(len(xeq)) + u10
+
+
+time   = linspace(t0,veces*T,endpoint=False)
+
+
+Frames = []
+for t in time:
+    u1 = A*exp(1J*ω1*t-1J*k1*n*a)
+    u2 = A*exp(1J*ω2*t-1J*k2*n*a)
+    y1 = zeros(len(xeq)) + u1
+    y2 = zeros(len(xeq)) + u2
+    x  = xeq # + u # + δx
+    Frames.append( go.Frame(data=[ go.Scatter(x=x,
+                                              y=y1.real,
+                                              mode="markers",
+                                              marker=dict(color="red",size=10),
+                                              name=f'time = {t:.2f}') ]) )
+
+
+fig = go.Figure(
+    data = [go.Scatter(x=x0, 
+                       y=y10.real,
+                       mode="markers",
+                       marker=dict(color="red",size=10),
+                       name=f'time = {t0:.2f}')],
+    layout = go.Layout(xaxis=dict(range=[-nmx-1, nmx+1], autorange=False),
+                       yaxis=dict(range=[-0.5, 0.5], autorange=False),
+                       showlegend=True,
+                       title="Start Title",
+                       updatemenus=[dict(type    = "buttons",
+                                         buttons = [dict(label="Play",
+                                                         method  = "animate",
+                                                         args    = [None,
+                                                                    dict(frame       = dict(duration=5,redraw=True), 
+                                                                         transition  = dict(duration=4),
+                                                                         fromcurrent = True,
+                                                                         mode        = 'immediate')])])]),
+    frames = Frames
+)
+
+fig.show()
+```
+

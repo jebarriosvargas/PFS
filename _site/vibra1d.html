@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PFS - Cadena Unidimensional</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+        <script type="text/javascript">
+        window.PlotlyConfig = {MathJaxConfig: 'local'};
+        if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+        if (typeof require !== 'undefined') {
+        require.undef("plotly");
+        requirejs.config({
+            paths: {
+                'plotly': ['https://cdn.plot.ly/plotly-2.18.2.min']
+            }
+        });
+        require(['plotly'], function(Plotly) {
+            window._Plotly = Plotly;
+        });
+        }
+        </script>
+        
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">PFS</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">
+ <span class="menu-text">Acerca</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./vibra1d.html" aria-current="page">
+ <span class="menu-text">Vibraciones en una cadena</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cadena Unidimensional</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>t   <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> κ <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> m <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> a <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> A <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>nmx <span class="op">=</span> <span class="dv">10</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>n   <span class="op">=</span> arange(<span class="op">-</span>nmx,nmx)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>xeq <span class="op">=</span> n<span class="op">*</span>a</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>yeq <span class="op">=</span> zeros_like(xeq)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#######</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>k1   <span class="op">=</span> <span class="fl">0.2</span><span class="op">*</span>pi<span class="op">/</span>a</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>k2   <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>pi<span class="op">/</span>a<span class="op">+</span><span class="dv">2</span><span class="op">*</span>pi<span class="op">/</span>a</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#######</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ω<span class="dv">1</span>   <span class="op">=</span> sqrt(<span class="dv">4</span><span class="op">*</span>κ<span class="op">/</span>m) <span class="op">*</span> <span class="bu">abs</span>( sin(k1<span class="op">*</span>a<span class="op">/</span><span class="dv">2</span>) )</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ω<span class="dv">2</span>   <span class="op">=</span> sqrt(<span class="dv">4</span><span class="op">*</span>κ<span class="op">/</span>m) <span class="op">*</span> <span class="bu">abs</span>( sin(k2<span class="op">*</span>a<span class="op">/</span><span class="dv">2</span>) )</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>u1   <span class="op">=</span> A<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>ω<span class="dv">1</span><span class="op">*</span>t<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>k1<span class="op">*</span>n<span class="op">*</span>a) <span class="co"># En lugar de δx_n</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>u2   <span class="op">=</span> A<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>ω<span class="dv">2</span><span class="op">*</span>t<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>k2<span class="op">*</span>n<span class="op">*</span>a) <span class="co"># En lugar de δx_n</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>y1   <span class="op">=</span> zeros(<span class="bu">len</span>(xeq)) <span class="op">+</span> u1</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>y2   <span class="op">=</span> zeros(<span class="bu">len</span>(xeq)) <span class="op">+</span> u2</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>x    <span class="op">=</span> xeq <span class="co"># + u # δx</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"k = </span><span class="sc">{</span>k1<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>k2<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ω = </span><span class="sc">{ω</span><span class="dv">1</span><span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{ω</span><span class="dv">2</span><span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>k = 0.628, 7.854
+ω = 0.618, 1.414</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Librería de graficación con plotly.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>T      <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>pi<span class="op">/</span>ω<span class="dv">1</span> <span class="co"># periodo</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>veces  <span class="op">=</span> <span class="dv">4</span>       <span class="co"># número de periodos</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Posición en el tiempo cero</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>t0  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>x0  <span class="op">=</span> xeq</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>u10 <span class="op">=</span> A<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>ω<span class="dv">1</span><span class="op">*</span>t0<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>k1<span class="op">*</span>n<span class="op">*</span>a)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>y10 <span class="op">=</span> zeros(<span class="bu">len</span>(xeq)) <span class="op">+</span> u10</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>time   <span class="op">=</span> linspace(t0,veces<span class="op">*</span>T,endpoint<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>Frames <span class="op">=</span> []</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> time:</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    u1 <span class="op">=</span> A<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>ω<span class="dv">1</span><span class="op">*</span>t<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>k1<span class="op">*</span>n<span class="op">*</span>a)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    u2 <span class="op">=</span> A<span class="op">*</span>exp(<span class="ot">1J</span><span class="op">*</span>ω<span class="dv">2</span><span class="op">*</span>t<span class="op">-</span><span class="ot">1J</span><span class="op">*</span>k2<span class="op">*</span>n<span class="op">*</span>a)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    y1 <span class="op">=</span> zeros(<span class="bu">len</span>(xeq)) <span class="op">+</span> u1</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    y2 <span class="op">=</span> zeros(<span class="bu">len</span>(xeq)) <span class="op">+</span> u2</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    x  <span class="op">=</span> xeq <span class="co"># + u # + δx</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    Frames.append( go.Frame(data<span class="op">=</span>[ go.Scatter(x<span class="op">=</span>x,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                                              y<span class="op">=</span>y1.real,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                                              mode<span class="op">=</span><span class="st">"markers"</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                                              marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"red"</span>,size<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>                                              name<span class="op">=</span><span class="ss">f'time = </span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss">'</span>) ]) )</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> [go.Scatter(x<span class="op">=</span>x0, </span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                       y<span class="op">=</span>y10.real,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                       mode<span class="op">=</span><span class="st">"markers"</span>,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                       marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"red"</span>,size<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                       name<span class="op">=</span><span class="ss">f'time = </span><span class="sc">{</span>t0<span class="sc">:.2f}</span><span class="ss">'</span>)],</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    layout <span class="op">=</span> go.Layout(xaxis<span class="op">=</span><span class="bu">dict</span>(<span class="bu">range</span><span class="op">=</span>[<span class="op">-</span>nmx<span class="op">-</span><span class="dv">1</span>, nmx<span class="op">+</span><span class="dv">1</span>], autorange<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                       yaxis<span class="op">=</span><span class="bu">dict</span>(<span class="bu">range</span><span class="op">=</span>[<span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>], autorange<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>                       showlegend<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>                       title<span class="op">=</span><span class="st">"Start Title"</span>,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>                       updatemenus<span class="op">=</span>[<span class="bu">dict</span>(<span class="bu">type</span>    <span class="op">=</span> <span class="st">"buttons"</span>,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>                                         buttons <span class="op">=</span> [<span class="bu">dict</span>(label<span class="op">=</span><span class="st">"Play"</span>,</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>                                                         method  <span class="op">=</span> <span class="st">"animate"</span>,</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>                                                         args    <span class="op">=</span> [<span class="va">None</span>,</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>                                                                    <span class="bu">dict</span>(frame       <span class="op">=</span> <span class="bu">dict</span>(duration<span class="op">=</span><span class="dv">5</span>,redraw<span class="op">=</span><span class="va">True</span>), </span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>                                                                         transition  <span class="op">=</span> <span class="bu">dict</span>(duration<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>                                                                         fromcurrent <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>                                                                         mode        <span class="op">=</span> <span class="st">'immediate'</span>)])])]),</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    frames <span class="op">=</span> Frames</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="438a9d00-44d3-4a63-a13c-e595b8cd0f90" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("438a9d00-44d3-4a63-a13c-e595b8cd0f90")) {                    Plotly.newPlot(                        "438a9d00-44d3-4a63-a13c-e595b8cd0f90",                        [{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 0.00","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.2,0.16180339887498948,0.06180339887498945,-0.061803398874989514,-0.1618033988749895,-0.2,-0.16180339887498948,-0.06180339887498947,0.06180339887498949,0.1618033988749895,0.2,0.1618033988749895,0.06180339887498949,-0.06180339887498947,-0.16180339887498948,-0.2,-0.1618033988749895,-0.061803398874989514,0.06180339887498945,0.16180339887498948],"type":"scatter"}],                        {"showlegend":true,"title":{"text":"Start Title"},"updatemenus":[{"buttons":[{"args":[null,{"frame":{"duration":5,"redraw":true},"transition":{"duration":4},"fromcurrent":true,"mode":"immediate"}],"label":"Play","method":"animate"}],"type":"buttons"}],"xaxis":{"autorange":false,"range":[-11,11]},"yaxis":{"autorange":false,"range":[-0.5,0.5]},"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}}},                        {"responsive": true}                    ).then(function(){
+                            Plotly.addFrames('438a9d00-44d3-4a63-a13c-e595b8cd0f90', [{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 0.00","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.2,0.16180339887498948,0.06180339887498945,-0.061803398874989514,-0.1618033988749895,-0.2,-0.16180339887498948,-0.06180339887498947,0.06180339887498949,0.1618033988749895,0.2,0.1618033988749895,0.06180339887498949,-0.06180339887498947,-0.16180339887498948,-0.2,-0.1618033988749895,-0.061803398874989514,0.06180339887498945,0.16180339887498948],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 0.81","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.17526133600877278,0.19842294026289556,0.14579372548428224,0.037476262917144856,-0.08515585831301459,-0.17526133600877275,-0.19842294026289556,-0.14579372548428227,-0.03747626291714492,0.08515585831301453,0.17526133600877272,0.1984229402628956,0.14579372548428232,0.03747626291714495,-0.08515585831301455,-0.17526133600877272,-0.1984229402628956,-0.14579372548428232,-0.037476262917144926,0.08515585831301453],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 1.63","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.10716535899579945,0.18595529717765036,0.19371663222572622,0.12748479794973785,0.012558103905862567,-0.10716535899579943,-0.1859552971776503,-0.19371663222572622,-0.12748479794973797,-0.012558103905862681,0.10716535899579932,0.18595529717765027,0.19371663222572624,0.12748479794973797,0.012558103905862705,-0.10716535899579929,-0.18595529717765027,-0.19371663222572624,-0.1274847979497379,-0.012558103905862643],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 2.44","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.012558103905862664,0.12748479794973794,0.19371663222572622,0.1859552971776503,0.10716535899579936,-0.012558103905862643,-0.1274847979497379,-0.19371663222572622,-0.1859552971776503,-0.10716535899579938,0.012558103905862662,0.12748479794973794,0.19371663222572622,0.1859552971776503,0.10716535899579936,-0.012558103905862636,-0.12748479794973788,-0.19371663222572622,-0.18595529717765033,-0.10716535899579943],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 3.25","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.08515585831301435,0.03747626291714495,0.14579372548428232,0.1984229402628956,0.17526133600877272,0.08515585831301453,-0.037476262917144926,-0.14579372548428232,-0.1984229402628956,-0.17526133600877272,-0.08515585831301455,0.037476262917144905,0.1457937254842823,0.19842294026289556,0.17526133600877275,0.08515585831301457,-0.03747626291714488,-0.14579372548428227,-0.19842294026289556,-0.17526133600877275],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 4.07","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.16180339887498946,-0.061803398874989424,0.06180339887498955,0.1618033988749895,0.2,0.16180339887498948,0.06180339887498945,-0.061803398874989514,-0.16180339887498946,-0.2,-0.16180339887498954,-0.06180339887498956,0.06180339887498942,0.16180339887498946,0.2,0.16180339887498954,0.06180339887498958,-0.061803398874989396,-0.16180339887498943,-0.2],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 4.88","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.1984229402628956,-0.14579372548428235,-0.037476262917145,0.08515585831301446,0.1752613360087727,0.1984229402628956,0.14579372548428238,0.03747626291714503,-0.08515585831301443,-0.1752613360087727,-0.1984229402628956,-0.14579372548428235,-0.03747626291714497,0.08515585831301449,0.1752613360087727,0.1984229402628956,0.14579372548428235,0.03747626291714499,-0.08515585831301448,-0.1752613360087727],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 5.69","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.18595529717765036,-0.19371663222572622,-0.12748479794973785,-0.012558103905862542,0.10716535899579945,0.18595529717765036,0.19371663222572622,0.12748479794973785,0.012558103905862567,-0.10716535899579943,-0.1859552971776503,-0.19371663222572622,-0.12748479794973797,-0.012558103905862681,0.10716535899579932,0.18595529717765027,0.19371663222572624,0.12748479794973797,0.012558103905862705,-0.10716535899579929],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 6.51","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.12748479794973797,-0.19371663222572622,-0.1859552971776503,-0.10716535899579933,0.012558103905862664,0.12748479794973794,0.19371663222572622,0.1859552971776503,0.10716535899579936,-0.012558103905862643,-0.1274847979497379,-0.19371663222572622,-0.1859552971776503,-0.10716535899579938,0.012558103905862617,0.12748479794973788,0.19371663222572622,0.18595529717765033,0.1071653589957994,-0.012558103905862593],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 7.32","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.0374762629171448,-0.14579372548428224,-0.19842294026289556,-0.1752613360087728,-0.08515585831301467,0.03747626291714478,0.1457937254842822,0.19842294026289556,0.1752613360087728,0.0851558583130147,-0.03747626291714475,-0.14579372548428218,-0.19842294026289556,-0.1752613360087728,-0.08515585831301471,0.037476262917144725,0.14579372548428216,0.19842294026289553,0.17526133600877283,0.08515585831301474],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 8.13","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.0618033988749894,-0.06180339887498957,-0.16180339887498954,-0.2,-0.16180339887498946,-0.061803398874989424,0.06180339887498937,0.1618033988749894,0.2,0.16180339887498957,0.06180339887498962,-0.06180339887498935,-0.1618033988749894,-0.2,-0.1618033988749896,-0.06180339887498964,0.061803398874989326,0.1618033988749894,0.2,0.16180339887498962],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 8.95","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.14579372548428235,0.03747626291714498,-0.08515585831301448,-0.1752613360087727,-0.1984229402628956,-0.14579372548428235,-0.037476262917145,0.08515585831301446,0.1752613360087727,0.1984229402628956,0.14579372548428238,0.03747626291714503,-0.08515585831301443,-0.1752613360087727,-0.1984229402628956,-0.1457937254842824,-0.03747626291714506,0.08515585831301442,0.17526133600877267,0.1984229402628956],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 9.76","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.19371663222572627,0.12748479794973808,0.012558103905862872,-0.10716535899579915,-0.18595529717765022,-0.1937166322257263,-0.1274847979497381,-0.01255810390586272,0.10716535899579929,0.18595529717765027,0.19371663222572624,0.127484797949738,0.012558103905862745,-0.10716535899579926,-0.18595529717765025,-0.19371663222572624,-0.12748479794973802,-0.01255810390586277,0.10716535899579925,0.18595529717765025],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 10.57","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.19371663222572616,0.1859552971776504,0.1071653589957996,-0.012558103905862338,-0.1274847979497377,-0.19371663222572613,-0.1859552971776504,-0.10716535899579963,0.01255810390586249,0.1274847979497378,0.1937166322257262,0.18595529717765036,0.10716535899579951,-0.012558103905862464,-0.12748479794973777,-0.1937166322257262,-0.18595529717765036,-0.10716535899579951,0.01255810390586244,0.12748479794973774],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 11.39","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.14579372548428246,0.19842294026289561,0.1752613360087726,0.08515585831301432,-0.03747626291714515,-0.14579372548428246,-0.19842294026289561,-0.1752613360087726,-0.08515585831301435,0.03747626291714495,0.14579372548428232,0.1984229402628956,0.17526133600877272,0.08515585831301453,-0.037476262917144926,-0.14579372548428232,-0.1984229402628956,-0.17526133600877272,-0.08515585831301455,0.037476262917144905],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 12.20","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.06180339887498959,0.16180339887498954,0.2,0.16180339887498943,0.0618033988749894,-0.06180339887498957,-0.16180339887498954,-0.2,-0.16180339887498946,-0.061803398874989424,0.06180339887498937,0.1618033988749894,0.2,0.16180339887498957,0.06180339887498962,-0.06180339887498935,-0.1618033988749894,-0.2,-0.1618033988749896,-0.06180339887498964],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 13.01","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.037476262917144954,0.0851558583130145,0.1752613360087727,0.1984229402628956,0.14579372548428235,0.03747626291714498,-0.08515585831301448,-0.1752613360087727,-0.1984229402628956,-0.14579372548428235,-0.037476262917145,0.08515585831301446,0.1752613360087727,0.1984229402628956,0.14579372548428238,0.03747626291714503,-0.08515585831301443,-0.1752613360087727,-0.1984229402628956,-0.1457937254842824],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 13.83","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.12748479794973808,-0.012558103905862851,0.10716535899579918,0.18595529717765022,0.19371663222572627,0.12748479794973808,0.012558103905862872,-0.10716535899579915,-0.18595529717765022,-0.1937166322257263,-0.1274847979497381,-0.012558103905862898,0.10716535899579914,0.18595529717765022,0.1937166322257263,0.12748479794973813,0.012558103905862922,-0.10716535899579911,-0.1859552971776502,-0.1937166322257263],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 14.64","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.1859552971776504,-0.1071653589957996,0.012558103905862358,0.12748479794973772,0.19371663222572616,0.1859552971776504,0.1071653589957996,-0.012558103905862338,-0.1274847979497377,-0.19371663222572613,-0.1859552971776504,-0.10716535899579963,0.012558103905862312,0.12748479794973766,0.19371663222572613,0.18595529717765044,0.10716535899579965,-0.012558103905862287,-0.12748479794973763,-0.19371663222572613],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 15.45","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.19842294026289556,-0.17526133600877278,-0.08515585831301463,0.03747626291714483,0.14579372548428224,0.19842294026289556,0.1752613360087728,0.08515585831301464,-0.0374762629171448,-0.14579372548428224,-0.19842294026289556,-0.1752613360087728,-0.08515585831301467,0.03747626291714478,0.1457937254842822,0.19842294026289556,0.1752613360087728,0.0851558583130147,-0.03747626291714475,-0.14579372548428218],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 16.27","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.16180339887498957,-0.2,-0.16180339887498962,-0.061803398874989715,0.06180339887498925,0.16180339887498935,0.2,0.16180339887498965,0.061803398874989736,-0.06180339887498923,-0.16180339887498932,-0.2,-0.16180339887498965,-0.06180339887498976,0.0618033988749892,0.16180339887498932,0.2,0.16180339887498968,0.06180339887498979,-0.06180339887498918],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 17.08","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.08515585831301453,-0.17526133600877272,-0.1984229402628956,-0.14579372548428235,-0.037476262917144954,0.0851558583130145,0.1752613360087727,0.1984229402628956,0.14579372548428235,0.03747626291714498,-0.08515585831301448,-0.1752613360087727,-0.1984229402628956,-0.14579372548428235,-0.037476262917145,0.08515585831301446,0.1752613360087727,0.1984229402628956,0.14579372548428238,0.03747626291714503],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 17.89","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.012558103905862825,-0.10716535899579921,-0.18595529717765025,-0.19371663222572627,-0.12748479794973808,-0.012558103905862851,0.10716535899579918,0.18595529717765022,0.19371663222572627,0.12748479794973808,0.012558103905862872,-0.10716535899579915,-0.18595529717765022,-0.1937166322257263,-0.1274847979497381,-0.012558103905862898,0.10716535899579914,0.18595529717765022,0.1937166322257263,0.12748479794973813],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 18.71","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.10716535899579958,-0.012558103905862384,-0.12748479794973772,-0.19371663222572616,-0.1859552971776504,-0.1071653589957996,0.012558103905862358,0.12748479794973772,0.19371663222572616,0.1859552971776504,0.1071653589957996,-0.012558103905862338,-0.1274847979497377,-0.19371663222572613,-0.1859552971776504,-0.10716535899579963,0.012558103905862312,0.12748479794973766,0.19371663222572613,0.18595529717765044],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 19.52","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.17526133600877292,0.08515585831301428,-0.0374762629171445,-0.1457937254842825,-0.19842294026289556,-0.17526133600877278,-0.08515585831301463,0.03747626291714483,0.14579372548428224,0.19842294026289556,0.1752613360087728,0.08515585831301464,-0.0374762629171448,-0.14579372548428224,-0.19842294026289556,-0.1752613360087728,-0.08515585831301467,0.03747626291714478,0.1457937254842822,0.19842294026289556],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 20.33","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.2,0.1618033988749894,0.06180339887498936,-0.06180339887498962,-0.16180339887498957,-0.2,-0.16180339887498943,-0.06180339887498938,0.06180339887498959,0.16180339887498954,0.2,0.16180339887498943,0.0618033988749894,-0.06180339887498957,-0.16180339887498954,-0.2,-0.16180339887498946,-0.061803398874989424,0.06180339887498955,0.1618033988749895],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 21.15","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.1752613360087724,0.1984229402628956,0.1457937254842828,0.03747626291714493,-0.08515585831301388,-0.17526133600877272,-0.19842294026289564,-0.14579372548428257,-0.03747626291714531,0.08515585831301418,0.17526133600877253,0.19842294026289564,0.14579372548428257,0.037476262917145335,-0.08515585831301416,-0.17526133600877253,-0.19842294026289564,-0.1457937254842826,-0.037476262917145356,0.08515585831301414],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 21.96","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.10716535899579922,0.18595529717765025,0.19371663222572627,0.12748479794973808,0.012558103905862825,-0.10716535899579921,-0.18595529717765025,-0.19371663222572627,-0.12748479794973808,-0.012558103905862851,0.10716535899579918,0.18595529717765022,0.19371663222572627,0.12748479794973808,0.012558103905862872,-0.10716535899579915,-0.18595529717765022,-0.1937166322257263,-0.1274847979497381,-0.012558103905862898],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 22.77","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.012558103905863116,0.12748479794973774,0.19371663222572633,0.18595529717765039,0.10716535899579899,-0.012558103905862384,-0.12748479794973827,-0.19371663222572624,-0.18595529717765027,-0.10716535899579929,0.012558103905862714,0.12748479794973797,0.19371663222572624,0.18595529717765027,0.10716535899579932,-0.01255810390586269,-0.12748479794973797,-0.19371663222572622,-0.1859552971776503,-0.10716535899579933],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 23.59","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.0851558583130149,0.03747626291714452,0.14579372548428202,0.19842294026289553,0.17526133600877292,0.08515585831301492,-0.0374762629171445,-0.14579372548428202,-0.19842294026289553,-0.17526133600877294,-0.08515585831301495,0.037476262917144475,0.145793725484282,0.19842294026289553,0.17526133600877294,0.08515585831301498,-0.03747626291714445,-0.145793725484282,-0.19842294026289553,-0.17526133600877297],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 24.40","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.1618033988749894,-0.06180339887499001,0.06180339887498964,0.16180339887498918,0.2,0.16180339887498985,0.06180339887498936,-0.06180339887498894,-0.16180339887498957,-0.2,-0.16180339887498962,-0.061803398874989715,0.06180339887498925,0.16180339887498935,0.2,0.16180339887498965,0.061803398874989736,-0.06180339887498923,-0.16180339887498932,-0.2],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 25.21","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.19842294026289564,-0.1457937254842823,-0.03747626291714561,0.08515585831301455,0.1752613360087724,0.1984229402628956,0.1457937254842828,0.03747626291714493,-0.08515585831301388,-0.17526133600877272,-0.19842294026289564,-0.14579372548428257,-0.03747626291714531,0.08515585831301418,0.17526133600877253,0.19842294026289564,0.14579372548428257,0.037476262917145335,-0.08515585831301416,-0.17526133600877253],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 26.03","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.18595529717765025,-0.19371663222572627,-0.12748479794973805,-0.0125581039058628,0.10716535899579922,0.18595529717765025,0.19371663222572627,0.12748479794973808,0.012558103905862825,-0.10716535899579921,-0.18595529717765025,-0.19371663222572627,-0.12748479794973808,-0.012558103905862851,0.10716535899579918,0.18595529717765022,0.19371663222572627,0.12748479794973808,0.012558103905862872,-0.10716535899579915],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 26.84","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.12748479794973774,-0.1937166322257262,-0.18595529717765039,-0.10716535899579956,0.012558103905862409,0.12748479794973774,0.19371663222572616,0.18595529717765039,0.10716535899579958,-0.012558103905862384,-0.12748479794973772,-0.19371663222572616,-0.1859552971776504,-0.1071653589957996,0.012558103905862358,0.12748479794973772,0.19371663222572616,0.1859552971776504,0.1071653589957996,-0.012558103905862338],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 27.65","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.03747626291714455,-0.14579372548428204,-0.19842294026289553,-0.17526133600877292,-0.0851558583130149,0.03747626291714452,0.14579372548428202,0.19842294026289553,0.17526133600877292,0.08515585831301492,-0.0374762629171445,-0.14579372548428202,-0.19842294026289553,-0.17526133600877294,-0.08515585831301495,0.037476262917144475,0.145793725484282,0.19842294026289553,0.17526133600877294,0.08515585831301498],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 28.47","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.06180339887498998,-0.06180339887498898,-0.16180339887498918,-0.2,-0.16180339887498982,-0.06180339887499001,0.06180339887498896,0.16180339887498918,0.2,0.16180339887498985,0.061803398874990034,-0.06180339887498894,-0.16180339887498915,-0.2,-0.16180339887498985,-0.06180339887499006,0.06180339887498892,0.16180339887498915,0.2,0.16180339887498985],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 29.28","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.14579372548428277,0.037476262917145585,-0.08515585831301392,-0.1752613360087724,-0.19842294026289564,-0.1457937254842828,-0.03747626291714561,0.08515585831301391,0.1752613360087724,0.19842294026289567,0.1457937254842828,0.037476262917145634,-0.08515585831301388,-0.17526133600877236,-0.19842294026289567,-0.1457937254842828,-0.037476262917145654,0.08515585831301387,0.17526133600877236,0.19842294026289567],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 30.09","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.19371663222572624,0.12748479794973802,0.012558103905862775,-0.10716535899579925,-0.18595529717765025,-0.19371663222572627,-0.12748479794973805,-0.0125581039058628,0.10716535899579922,0.18595529717765025,0.19371663222572627,0.12748479794973808,0.012558103905862825,-0.10716535899579921,-0.18595529717765025,-0.19371663222572627,-0.12748479794973808,-0.012558103905862851,0.10716535899579918,0.18595529717765022],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 30.91","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.1937166322257262,0.18595529717765036,0.10716535899579954,-0.012558103905862435,-0.12748479794973774,-0.1937166322257262,-0.18595529717765039,-0.10716535899579956,0.012558103905862409,0.12748479794973774,0.19371663222572616,0.18595529717765039,0.10716535899579958,-0.012558103905862384,-0.12748479794973772,-0.19371663222572616,-0.1859552971776504,-0.1071653589957996,0.012558103905862358,0.12748479794973772],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 31.72","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.14579372548428204,0.19842294026289553,0.17526133600877292,0.08515585831301488,-0.03747626291714455,-0.14579372548428204,-0.19842294026289553,-0.17526133600877292,-0.0851558583130149,0.03747626291714452,0.14579372548428202,0.19842294026289553,0.17526133600877292,0.08515585831301492,-0.0374762629171445,-0.14579372548428202,-0.19842294026289553,-0.17526133600877294,-0.08515585831301495,0.037476262917144475],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 32.53","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.06180339887498901,0.16180339887498918,0.2,0.16180339887498982,0.06180339887498998,-0.06180339887498898,-0.16180339887498918,-0.2,-0.16180339887498982,-0.06180339887499001,0.06180339887498896,0.16180339887498918,0.2,0.16180339887498985,0.061803398874990034,-0.06180339887498894,-0.16180339887498915,-0.2,-0.16180339887498985,-0.06180339887499006],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 33.35","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.03747626291714486,0.08515585831301459,0.17526133600877275,0.19842294026289556,0.14579372548428227,0.037476262917144884,-0.08515585831301457,-0.17526133600877275,-0.19842294026289556,-0.1457937254842823,-0.03747626291714491,0.08515585831301455,0.17526133600877272,0.1984229402628956,0.14579372548428232,0.03747626291714493,-0.08515585831301453,-0.17526133600877272,-0.1984229402628956,-0.14579372548428235],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 34.16","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.127484797949738,-0.01255810390586275,0.10716535899579926,0.18595529717765025,0.19371663222572624,0.12748479794973802,0.012558103905862775,-0.10716535899579925,-0.18595529717765025,-0.19371663222572627,-0.12748479794973805,-0.0125581039058628,0.10716535899579922,0.18595529717765025,0.19371663222572627,0.12748479794973808,0.012558103905862825,-0.10716535899579921,-0.18595529717765025,-0.19371663222572627],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 34.97","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.18595529717765064,-0.10716535899580011,0.012558103905861748,0.12748479794973722,0.193716632225726,0.18595529717765064,0.10716535899580014,-0.012558103905861723,-0.1274847979497372,-0.193716632225726,-0.18595529717765066,-0.10716535899580015,0.0125581039058617,0.1274847979497372,0.193716632225726,0.18595529717765066,0.10716535899580018,-0.012558103905861677,-0.1274847979497372,-0.193716632225726],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 35.79","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.19842294026289553,-0.17526133600877292,-0.08515585831301486,0.03747626291714457,0.14579372548428204,0.19842294026289553,0.17526133600877292,0.08515585831301488,-0.03747626291714455,-0.14579372548428204,-0.19842294026289553,-0.17526133600877292,-0.0851558583130149,0.03747626291714452,0.14579372548428202,0.19842294026289553,0.17526133600877292,0.08515585831301492,-0.0374762629171445,-0.14579372548428202],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 36.60","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.1618033988749892,-0.2,-0.1618033988749898,-0.06180339887498996,0.06180339887498901,0.16180339887498918,0.2,0.16180339887498982,0.06180339887498998,-0.06180339887498898,-0.16180339887498918,-0.2,-0.16180339887498982,-0.06180339887499001,0.06180339887498896,0.16180339887498918,0.2,0.16180339887498985,0.061803398874990034,-0.06180339887498894],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 37.41","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[-0.08515585831301398,-0.17526133600877242,-0.19842294026289564,-0.14579372548428274,-0.03747626291714556,0.08515585831301395,0.17526133600877242,0.19842294026289564,0.14579372548428277,0.037476262917145585,-0.08515585831301392,-0.1752613360087724,-0.19842294026289564,-0.1457937254842828,-0.03747626291714561,0.08515585831301391,0.1752613360087724,0.19842294026289567,0.1457937254842828,0.037476262917145634],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 38.23","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.012558103905862728,-0.10716535899579929,-0.18595529717765027,-0.19371663222572624,-0.127484797949738,-0.01255810390586275,0.10716535899579926,0.18595529717765025,0.19371663222572624,0.12748479794973802,0.012558103905862775,-0.10716535899579925,-0.18595529717765025,-0.19371663222572627,-0.12748479794973805,-0.0125581039058628,0.10716535899579922,0.18595529717765025,0.19371663222572627,0.12748479794973808],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 39.04","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.10716535899579949,-0.012558103905862482,-0.1274847979497378,-0.1937166322257262,-0.18595529717765036,-0.10716535899579951,0.012558103905862459,0.12748479794973777,0.1937166322257262,0.18595529717765036,0.10716535899579954,-0.012558103905862435,-0.12748479794973774,-0.1937166322257262,-0.18595529717765039,-0.10716535899579956,0.012558103905862409,0.12748479794973774,0.19371663222572616,0.18595529717765039],"type":"scatter"}]},{"data":[{"marker":{"color":"red","size":10},"mode":"markers","name":"time = 39.85","x":[-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9],"y":[0.1752613360087729,0.08515585831301484,-0.03747626291714459,-0.14579372548428207,-0.19842294026289553,-0.17526133600877292,-0.08515585831301486,0.03747626291714457,0.14579372548428204,0.19842294026289553,0.17526133600877292,0.08515585831301488,-0.03747626291714455,-0.14579372548428204,-0.19842294026289553,-0.17526133600877292,-0.0851558583130149,0.03747626291714452,0.14579372548428202,0.19842294026289553],"type":"scatter"}]}]);
+                        }).then(function(){
+                            
+var gd = document.getElementById('438a9d00-44d3-4a63-a13c-e595b8cd0f90');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

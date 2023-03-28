@@ -1,6 +1,9 @@
 ---
-title: "PFS"
+title: "Propiedades Físicas de los Sólidos"
+author: "JEBV"
 ---
+
+
 
 This is a Quarto website.
 
