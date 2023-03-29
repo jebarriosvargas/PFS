@@ -3,6 +3,4 @@ title: "Propiedades Físicas de los Sólidos"
 author: "JEBV"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+En el sitio se encuentran una selección de notas del curso de Propiedades de Física de los Sólidos (clave: 0087) de la Facultad de Química, UNAM.

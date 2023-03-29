@@ -20,4 +20,5 @@ book:
 format:
   html:
     theme: minty
+    fontsize: 0.6em
     css: styles.css
