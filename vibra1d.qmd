@@ -4,29 +4,62 @@ format: html
 ---
 
 
+## Relación de dispersión
+
+$$
+\definecolor{azul}{RGB}{0, 0, 139}
+\newcommand{\kk}{\textcolor{red}{k}}
+$$
+
+
+$$
+\omega^2 = 2\frac{\kappa }{m}\bigg[  1-\cos(\kk a ) \bigg]
+$$
+
+Entonces,
+$$
+\omega(k) = \sqrt{\frac{4\kappa}{m}} \bigg| \sin\bigg( \frac{\kk a}{2} \bigg) \bigg|
+$$
+
+
+## Desplazamientos del equilibrio
+
+$$
+x_n = x_n^{\rm eq} + A e^{i\omega t-i\kk x_n^{\rm eq}}
+$$
+
+donde $x_n^{\rm eq}=na$.
+
+$$
+\delta x_n = A e^{i\omega t-i\kk na}
+$$
+
+
 
 
 ```{python}
 from pylab import *
 
-t   = 0; κ = 1; m = 1; a = 1; A = 0.2
+t   = 0; κ = 100; m = 1; a = 1; A = 0.2
 nmx = 10 
 n   = arange(-nmx,nmx)
 xeq = n*a
 yeq = zeros_like(xeq)
 #######
-k1   = 0.2*pi/a
-k2   = 0.5*pi/a+2*pi/a
+k    = 0.2*pi/a
 #######
-ω1   = sqrt(4*κ/m) * abs( sin(k1*a/2) )
-ω2   = sqrt(4*κ/m) * abs( sin(k2*a/2) )
-u1   = A*exp(1J*ω1*t-1J*k1*n*a) # En lugar de δx_n
-u2   = A*exp(1J*ω2*t-1J*k2*n*a) # En lugar de δx_n
-y1   = zeros(len(xeq)) + u1
-y2   = zeros(len(xeq)) + u2
-x    = xeq # + u # δx
-print(f"k = {k1:.3f}, {k2:.3f}")
-print(f"ω = {ω1:.3f}, {ω2:.3f}")
+ω    = sqrt(4*κ/m) * abs( sin(k*a/2) )
+δx   = A*exp(1J*ω*t-1J*k*n*a) # En lugar de δx_n
+x    = xeq + δx
+y    = zeros(len(xeq)) # + δx
+print("Valor de k seleccionado: ")
+print(f"k = {k:.3f}")
+print("Valor de ω seleccionado: ")
+print(f"ω = {ω:.3f}")
+print("Periódo de oscilación: ")
+
+T = 2*pi/ω
+print(f"T = {ω:.3f}")
 ```
 
 
@@ -38,14 +71,14 @@ print(f"ω = {ω1:.3f}, {ω2:.3f}")
 import plotly.graph_objects as go
 
 
-T      = 2*pi/ω1 # periodo
-veces  = 4       # número de periodos
+T      = 2*pi/ω   # periodo
+veces  = 10       # número de periodos
 
 # Posición en el tiempo cero
 t0  = 0
-x0  = xeq
-u10 = A*exp(1J*ω1*t0-1J*k1*n*a)
-y10 = zeros(len(xeq)) + u10
+δx0 = A*exp(1J*ω*t0-1J*k*n*a)
+x0  = xeq 
+y0  = zeros(len(xeq)) + δx0
 
 
 time   = linspace(t0,veces*T,endpoint=False)
@@ -53,21 +86,19 @@ time   = linspace(t0,veces*T,endpoint=False)
 
 Frames = []
 for t in time:
-    u1 = A*exp(1J*ω1*t-1J*k1*n*a)
-    u2 = A*exp(1J*ω2*t-1J*k2*n*a)
-    y1 = zeros(len(xeq)) + u1
-    y2 = zeros(len(xeq)) + u2
+    δx = A*exp(1J*ω*t-1J*k*n*a)
+    y  = zeros(len(xeq)) + δx
     x  = xeq # + u # + δx
-    Frames.append( go.Frame(data=[ go.Scatter(x=x,
-                                              y=y1.real,
+    Frames.append( go.Frame(data=[ go.Scatter(x=x.real,
+                                              y=y.real,
                                               mode="markers",
                                               marker=dict(color="red",size=10),
                                               name=f'time = {t:.2f}') ]) )
 
 
 fig = go.Figure(
-    data = [go.Scatter(x=x0, 
-                       y=y10.real,
+    data = [go.Scatter(x=x0.real, 
+                       y=y0.real,
                        mode="markers",
                        marker=dict(color="red",size=10),
                        name=f'time = {t0:.2f}')],
@@ -76,10 +107,11 @@ fig = go.Figure(
                        showlegend=True,
                        title="Start Title",
                        updatemenus=[dict(type    = "buttons",
+                                         direction = "right",
                                          buttons = [dict(label="Play",
                                                          method  = "animate",
                                                          args    = [None,
-                                                                    dict(frame       = dict(duration=5,redraw=True), 
+                                                                    dict(frame       = dict(duration=50,redraw=True), 
                                                                          transition  = dict(duration=4),
                                                                          fromcurrent = True,
                                                                          mode        = 'immediate')])])]),

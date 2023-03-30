@@ -8,7 +8,53 @@ $$
 $$
 
 $$
-\begin{align}
-\frac{\partial^2 }{\partial t^2} \uu = c^2 \nabla^2 \uu
-\end{align}
+\frac{\partial^2 }{\partial t^2} \uu = v^2 \nabla^2 \uu
+$$ {#eq-onda3D}
+
+donde $v$ es la rapidez de la onda y $\uu$ es una función de la posición y el tiempo, $\uu = \uu(\vec{r},t)$. 
+
+:::{.callout-tip appearance="simple" title="Ecuaciones de Maxwell"  callout-icon=false collapse=true}
+
+El campo eléctrico y el campo magnético siguen una ecuación de onda en el caso de que no haya cargas ni corrientes en el espacio
+
+$$
+\frac{\partial^2 }{\partial t^2} \vec{E} = c^2 \nabla^2 \vec{E} \\
+$$ 
+
+
+$$
+\frac{\partial^2 }{\partial t^2} \vec{B} = c^2 \nabla^2 \vec{B}
+$$
+
+:::
+
+
+
+En el caso de una dimensión, $\uu=\uu(x,t)$ y cumple la ecuación,
+$$
+\frac{\partial^2 }{\partial t^2} \uu = v^2 \frac{\partial^2 }{\partial t^2} \uu
 $$ {#eq-onda}
+
+Consideremos al espacio de forma discreta en el espacio
+
+$$
+\frac{\partial }{\partial x} \uu \bigg|_{x_0} = \lim_{h\to 0} \frac{\uu(x_0+h,t)-\uu(x_0,t)}{h} \approx \frac{\uu(x_0+h,t)-\uu(x_0,t)}{h}
+$$
+
+Alternativamente
+
+$$
+\frac{\partial }{\partial x} \uu \bigg|_{x_0} = \lim_{h\to 0} \frac{\uu(x_0+h/2,t)-\uu(x_0-h/2,t)}{h} \approx \frac{\uu(x_0+h/2,t)-\uu(x_0-h/2,t)}{h}
+$$
+
+Entonces la segunda derivada,
+
+$$
+\frac{\partial^2 }{\partial x^2} \uu \bigg|_{x_0} =\lim_{h\to 0} \frac{\frac{\partial \uu}{\partial x}|_{x_0+h/2} - \frac{\partial \uu}{\partial x}|_{x_0-h/2} }{h} 
+$$
+
+
+$$
+\frac{\partial^2 }{\partial x^2} \uu \bigg|_{x_0} \approx \frac{u(x_0-h,t)-2u(x_0,t)+u(x_0+h,t)}{h}
+$$
+
