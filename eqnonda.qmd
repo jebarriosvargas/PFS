@@ -1,0 +1,14 @@
+# Ecuación de onda
+
+La ecuación de onda es una ecuación diferencial parcial de segundo orden lineal y tiene la forma siguiente,
+
+$$
+\definecolor{purpura}{RGB}{160, 32, 240}
+\newcommand{\uu}{\textcolor{purpura}{u}}
+$$
+
+$$
+\begin{align}
+\frac{\partial^2 }{\partial t^2} \uu = c^2 \nabla^2 \uu
+\end{align}
+$$ {#eq-onda}

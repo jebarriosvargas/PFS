@@ -75,5 +75,12 @@
     "title": "Molécula \\(H_2\\)",
     "section": "1.2 Función que devuelve la energía",
     "text": "1.2 Función que devuelve la energía\n\ndef SCFenergia(d=0.7414):\n  H2 = pyscf.gto.Mole(atom = \"\"\"\n      H 0.0000  0.0000 0.0000\n      H 0.0000  0.0000 {0:.4f} \n      \"\"\".format(d),basis = \"STO-3G\")\n  H2  = H2.build()\n  rhf = scf.RHF(H2)\n  rhf.verbose = 0 \n  SCFe = rhf.kernel()\n  return SCFe\n\n\n# Separación entre átomos de H\nd = linspace(0.4,3.0,301) # angstroms\n\n\n# Evaluación de la Energía\nE = list( map(SCFenergia,d))\n\n\nplot(d,E,'o-')\nxlabel('d [Å]')\nylabel('E [Ha]')\n\nText(0, 0.5, 'E [Ha]')"
+  },
+  {
+    "objectID": "eqnonda.html",
+    "href": "eqnonda.html",
+    "title": "5  Ecuación de onda",
+    "section": "",
+    "text": "La ecuación de onda es una ecuación diferencial parcial de segundo orden lineal y tiene la forma siguiente,\n\\[\n\\definecolor{purpura}{RGB}{160, 32, 240}\n\\newcommand{\\uu}{\\textcolor{purpura}{u}}\n\\]\n\\[\n\\begin{align}\n\\frac{\\partial^2 }{\\partial t^2} \\uu = c^2 \\nabla^2 \\uu\n\\end{align}\n\\tag{5.1}\\]"
   }
 ]

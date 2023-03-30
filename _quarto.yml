@@ -16,7 +16,7 @@ book:
         - href: molecula_H2.qmd
           text: "pyscf H2"
         - vibra1d.qmd
-
+        - eqnonda.qmd
 format:
   html:
     theme: minty
