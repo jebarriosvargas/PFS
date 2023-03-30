@@ -3,6 +3,9 @@ title: "Cadena Unidimensional"
 format: html
 ---
 
+
+
+
 ```{python}
 from pylab import *
 
