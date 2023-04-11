@@ -101,7 +101,7 @@ u_{r x}\\
 u_{r y}\\
 u_{r z}\\
 \end{array}\right] = 
-\bigg[ \frac{1}{\sqrt{M_\beta M_\alpha}} U_{\vec{0} \alpha i }^{\vm \beta j} e^{-i\vk \cdot  \vRm } \bigg]_{\alpha i,\beta j} \left[\begin{array}{c}
+\bigg[ \frac{1}{\sqrt{M_\beta M_\alpha}} \sum_{\vm} U_{\vec{0} \alpha i }^{\vm \beta j} e^{-i\vk \cdot  \vRm } \bigg]_{\alpha i,\beta j} \left[\begin{array}{c}
 u_{1 x}\\
 u_{1 y}\\
 u_{1 z}\\
@@ -114,6 +114,22 @@ $$
 
 donde la matriz del lado derecho se llama matriz dinámica.
 
+$$
+D = \left[\begin{array}{cccc}
+\frac{1}{\sqrt{M_1 M_1}} \sum_{\vm} U_{\vec{0} 1 x }^{\vm 1 x} e^{-i\vk \cdot  \vRm } &
+\frac{1}{\sqrt{M_1 M_1}} \sum_{\vm} U_{\vec{0} 1 x }^{\vm 1 y} e^{-i\vk \cdot  \vRm } &
+\frac{1}{\sqrt{M_1 M_1}} \sum_{\vm} U_{\vec{0} 1 x }^{\vm 1 z} e^{-i\vk \cdot  \vRm } &\ldots \\
+\frac{1}{\sqrt{M_1 M_1}} \sum_{\vm} U_{\vec{0} 1 y }^{\vm 1 x} e^{-i\vk \cdot  \vRm } &
+\frac{1}{\sqrt{M_1 M_1}} \sum_{\vm} U_{\vec{0} 1 y }^{\vm 1 y} e^{-i\vk \cdot  \vRm } &
+\frac{1}{\sqrt{M_1 M_1}} \sum_{\vm} U_{\vec{0} 1 y }^{\vm 1 z} e^{-i\vk \cdot  \vRm } &
+\ldots \\
+\frac{1}{\sqrt{M_1 M_1}} \sum_{\vm} U_{\vec{0} 1 z }^{\vm 1 x} e^{-i\vk \cdot  \vRm } &
+\frac{1}{\sqrt{M_1 M_1}} \sum_{\vm} U_{\vec{0} 1 z }^{\vm 1 y} e^{-i\vk \cdot  \vRm } &
+\frac{1}{\sqrt{M_1 M_1}} \sum_{\vm} U_{\vec{0} 1 z }^{\vm 1 z} e^{-i\vk \cdot  \vRm } &
+\ldots \\
+\vdots&\vdots&\vdots&\vdots
+\end{array}\right]
+$$
 
 ## Otra notación
 
