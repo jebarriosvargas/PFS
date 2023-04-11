@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PFS – molecula_h2</title>
+<title>PFS - 6&nbsp; Matriz dinámica</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./vibra1d.html" rel="next">
-<link href="./about.html" rel="prev">
+<link href="./eqnonda.html" rel="prev">
 <link href="./logoJEBV.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -100,6 +65,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
+<meta name="twitter:title" content="PFS - 6&nbsp; Matriz dinámica">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating">
@@ -111,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./molecula_H2.html">Vibraciones</a></li><li class="breadcrumb-item"><a href="./molecula_H2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pyscf H2</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./molecula_H2.html">Vibraciones</a></li><li class="breadcrumb-item"><a href="./matrizdinamica.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matriz dinámica</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./molecula_H2.html" class="sidebar-item-text sidebar-link active">
+  <a href="./molecula_H2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pyscf H2</span></span></a>
   </div>
 </li>
@@ -177,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./matrizdinamica.html" class="sidebar-item-text sidebar-link">
+  <a href="./matrizdinamica.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matriz dinámica</span></span></a>
   </div>
 </li>
@@ -189,14 +157,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://colab.research.google.com/drive/1Bdav-AzDmWBa4A2GMa4P5DkAMDX_F4dh?usp=sharing"><i class="bi bi-journal-code"></i>Abrir en colab</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#la-energía-potencial" id="toc-la-energía-potencial" class="nav-link active" data-scroll-target="#la-energía-potencial"><span class="header-section-number">6.1</span> La energía potencial</a></li>
+  <li><a href="#ecuaciones-de-movimiento" id="toc-ecuaciones-de-movimiento" class="nav-link" data-scroll-target="#ecuaciones-de-movimiento"><span class="header-section-number">6.2</span> Ecuaciones de movimiento</a></li>
+  <li><a href="#otra-notación" id="toc-otra-notación" class="nav-link" data-scroll-target="#otra-notación"><span class="header-section-number">6.3</span> Otra notación</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Molécula <span class="math inline">\(H_2\)</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matriz dinámica</span></h1>
 </div>
 
 
@@ -211,132 +187,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div data-notebook="pyscf_H2.ipynb" data-notebook-title="Molécula $H_2$">
-<div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importación de las librerías</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#---</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span> <span class="co"># Librerías numpy,scipy y matplotlib</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyscf        <span class="co"># Librería pyscf</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="geometría-de-la-molécula-diatómica-rm-h_2" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Geometría de la molécula diatómica <span class="math inline">\({\rm H}_2\)</span></h1>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Átomo</th>
-<th>X[Å]</th>
-<th>Y[Å]</th>
-<th>Z[Å]</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>H</td>
-<td>0.0000</td>
-<td>0.0000</td>
-<td>0.0000</td>
-</tr>
-<tr class="even">
-<td>H</td>
-<td>0.0000</td>
-<td>0.0000</td>
-<td>0.7414</td>
-</tr>
-</tbody>
-</table>
-<div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de la clase mole (molecule)</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># útil para manipular los parámetros </span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># y atributos de las integrales GTO.</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>H2 <span class="op">=</span> pyscf.gto.Mole(atom <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">    H 0.0000  0.0000 0.0000</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">    H 0.0000  0.0000 0.7414 </span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,basis <span class="op">=</span> <span class="st">"STO-3G"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿Qué significa base STO-3G?</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Define la molécula con la geometría </span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># y ahora puede calcularse la Energía</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>H2 <span class="op">=</span> H2.build()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-outputid="3cd6999e-bc3b-4fa6-def4-6cc80afdd44c" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define el método de cálculo con la geometría</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>rhf <span class="op">=</span> scf.RHF(H2)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿Qué significa RHF?</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Restricted Hartree Fock</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejecuta el método definido y regresa la </span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Energía convergida.</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>rhf.kernel(<span class="bu">print</span><span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Las unidades de la energia son Hartree</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 Hartree = 27.211 eV</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Los Hartree son las unidades atomicas de la energia</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>converged SCF energy = -1.11668438708534</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>-1.1166843870853405</code></pre>
-</div>
-</div>
+<p><strong>Objetivo:</strong> describir de forma general cómo se mueven los átomos en un sólido</p>
+<p>La estrategía general es: determinar la energía potencial, derivar las ecuaciones de movimiento y resolver las ecuaciones de movimiento buscando los modos normales.</p>
+<section id="la-energía-potencial" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="la-energía-potencial"><span class="header-section-number">6.1</span> La energía potencial</h2>
+<p><span class="math display">\[
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vm}{\vec{m}}
+\newcommand{\vk}{\vec{k}}
+\newcommand{\vRn}{\vec{R}_{\vn}}
+\newcommand{\vRm}{\vec{R}_{\vm}}
+\newcommand{\req}[3]{ r_{#1 #2 #3}}
+\newcommand{\udes}[3]{ \delta r_{#1 #2 #3}}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+U &amp;= U(\{ \text{posiciones: } \req{\vn}{\alpha}{i} + \udes{\vn}{\alpha}{i} \}) \\
+&amp;\approx U(\{  \req{\vn}{\alpha}{i} \})+ \sum_{\vn \alpha i} \frac{\partial U}{\partial \udes{\vn}{\alpha}{i}}\bigg|_{\req{\vn}{\alpha}{i}} \udes{\vn}{\alpha}{i} + \frac{1}{2} \sum_{\vn \alpha i } \sum_{\vm \beta j} \frac{\partial^2 U}{\partial \udes{\vn}{\alpha}{i} \partial \udes{\vm}{\beta}{j} }\bigg|_{ \req{\vn}{\alpha}{i} } \udes{\vn}{\alpha}{i} \udes{\vm}{\beta}{j}
+\end{align}
+\]</span></p>
+<p>Introducimos la siguiente notación para las segundas derivadas,</p>
+<p><span class="math display">\[
+\frac{\partial^2 U}{\partial \udes{\vn}{\alpha}{i} \partial \udes{\vm}{\beta}{j} }\bigg|_{ \req{\vn}{\alpha}{i} } = U_{\vn \alpha i }^{\vm \beta j}\,,
+\]</span> las cuales llamaremos constantes de acoplamiento. Entonces, la aproximación para la energía potencial es</p>
+<p><span class="math display">\[
+\begin{align}
+U \approx U(\{  \req{\vn}{\alpha}{i} \}) + \frac{1}{2} \sum_{\vn \alpha i } \sum_{\vm \beta j} U_{\vn \alpha i }^{\vm \beta j} \udes{\vn}{\alpha}{i} \udes{\vm}{\beta}{j}
+\end{align}
+\]</span></p>
+<p>La fuerza que se realiza sobre el átomo <span class="math inline">\(\alpha\)</span> en la celda <span class="math inline">\(\vn\)</span> en la dirección <span class="math inline">\(i\)</span> es,</p>
+<p><span class="math display">\[
+F_{\vn \alpha i }= -\frac{\partial U}{\partial  \udes{\vn}{\alpha}{i}} = \sum_{\vm \beta j} -U_{\vn \alpha i }^{\vm \beta j} \udes{\vm}{\beta}{j}
+\]</span></p>
+<p>Notamos que,</p>
+<p><span class="math display">\[
+-U_{\vn \alpha i }^{\vm \beta j} \udes{\vm}{\beta}{j}\,,
+\]</span> es la fuerza que se realiza sobre el átomo <span class="math inline">\(\alpha\)</span> en la celda <span class="math inline">\(\vn\)</span> en la dirección <span class="math inline">\(i\)</span> al desplazar del equilibrio el átomo <span class="math inline">\(\beta\)</span> en la celda <span class="math inline">\(\vm\)</span> en la dirección <span class="math inline">\(j\)</span>, <span class="math inline">\(\udes{\vm}{\beta}{j}\)</span>.</p>
+<p>Dada la simetría de traslación <span class="math inline">\(U_{\vn \alpha i }^{\vm \beta j}\)</span> sólo depende de la diferencia de las celdas; es decir, de <span class="math inline">\(\vm-\vn\)</span>. Entonces, <span class="math display">\[
+U_{\vec{0}\alpha i}^{ (\vm-\vn)\beta j } = U_{\vn \alpha i }^{\vm \beta j}
+\]</span></p>
 </section>
-<section id="variación-de-la-geometría" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Variación de la geometría</h1>
-<div class="cell" data-outputid="b299ce71-d6de-4bfd-bb79-d800576216f9" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fl">3.0</span> <span class="co"># angstroms</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>H2 <span class="op">=</span> pyscf.gto.Mole(atom <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">    H 0.0000  0.0000 0.0000</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">    H 0.0000  0.0000 </span><span class="sc">{0:.4f}</span><span class="st"> </span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>.<span class="bu">format</span>(d),basis <span class="op">=</span> <span class="st">"STO-3G"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>H2  <span class="op">=</span> H2.build()</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>rhf <span class="op">=</span> scf.RHF(H2)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>rhf.kernel()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>converged SCF energy = -0.656048251145591</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>-0.656048251145591</code></pre>
-</div>
-</div>
+<section id="ecuaciones-de-movimiento" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="ecuaciones-de-movimiento"><span class="header-section-number">6.2</span> Ecuaciones de movimiento</h2>
+<p><span class="math display">\[
+M_\alpha \frac{d^2}{dt^2} \udes{\vn}{\alpha}{i} = -\sum_{\vm \beta j} U_{\vn \alpha i }^{\vm \beta j} \udes{\vm}{\beta}{j}
+\]</span></p>
+<p><span class="math display">\[
+M_\alpha \frac{d^2}{dt^2} \udes{\vn}{\alpha}{i} + \sum_{\vm \beta j} U_{\vn \alpha i }^{\vm \beta j} \udes{\vm}{\beta}{j} = 0
+\]</span></p>
+<p>Notamos que tenemos <span class="math inline">\(3rN\)</span> ecuaciones de movimiento, donde el <span class="math inline">\(3\)</span> corresponde a las tres direcciones de movimiento en el espacio, <span class="math inline">\(r\)</span> es el número de átomos en la celda unitaria y <span class="math inline">\(N\)</span> son el número de celdas unitarias.</p>
+<p>Proponemos una solución correspondiente a un modo normal, <span class="math display">\[
+\udes{\vn}{\alpha}{i} = e^{i\omega t-i\vk\cdot \vRn }\bigg[  \frac{1}{\sqrt{M}_\alpha} u_{\alpha i} \bigg]
+\]</span></p>
+<p>Sustituimos en las ecuaciones de movimiento, <span class="math display">\[
+-\omega^2 M_\alpha \bigg[  \frac{1}{\sqrt{M_\alpha}} u_{\alpha i} \bigg] + \sum_{\vm \beta j} U_{\vn \alpha i }^{\vm \beta j} e^{ i\vk \cdot (\vRn -\vRm) } \frac{1}{\sqrt{M}_\beta} u_{\beta j} = 0
+\]</span></p>
+<p><span class="math display">\[
+-\omega^2 \sqrt{M}_\alpha u_{\alpha i} + \sum_{\beta j } \frac{1}{\sqrt{M}_\beta}\bigg[ \sum_{\vm} U_{\vn \alpha i }^{\vm \beta j} e^{ i\vk \cdot (\vRn -\vRm) }  \bigg] u_{\beta j} =0
+\]</span></p>
+<p><span class="math display">\[
+-\omega^2  u_{\alpha i} + \sum_{\beta j } \frac{1}{\sqrt{M_\beta M_\alpha}}\bigg[ \sum_{\vm} U_{\vn \alpha i }^{\vm \beta j} e^{ i\vk \cdot (\vRn -\vRm) }  \bigg] u_{\beta j} =0
+\]</span></p>
+<p>Notamos que las ecuaciones anteriores son <span class="math inline">\(3r\)</span> para cada celda unitaria <span class="math inline">\(\vn\)</span> y dado que todas las celdas son iguales, podemos elegir arbitrariamente <span class="math inline">\(\vn=\vec{0}\)</span> y resolver. Entonces, dichas soluciones serán las mismas para todas.</p>
+<p><span class="math display">\[
+-\omega^2  u_{\alpha i} + \sum_{\beta j } \frac{1}{\sqrt{M_\beta M_\alpha}}\bigg[ \sum_{\vm} U_{\vec{0} \alpha i }^{\vm \beta j} e^{-i\vk \cdot  \vRm }  \bigg] u_{\beta j} =0
+\]</span></p>
+<p>Las <span class="math inline">\(3r\)</span> ecuaciones podemos reescribirlas de forma matricial de la forma, <span class="math display">\[
+\omega^2\left[\begin{array}{c}
+u_{1 x}\\
+u_{1 y}\\
+u_{1 z}\\
+\vdots \\
+u_{r x}\\
+u_{r y}\\
+u_{r z}\\
+\end{array}\right] =
+\bigg[ \frac{1}{\sqrt{M_\beta M_\alpha}} U_{\vec{0} \alpha i }^{\vm \beta j} e^{-i\vk \cdot  \vRm } \bigg]_{\alpha i,\beta j} \left[\begin{array}{c}
+u_{1 x}\\
+u_{1 y}\\
+u_{1 z}\\
+\vdots \\
+u_{r x}\\
+u_{r y}\\
+u_{r z}\\
+\end{array}\right]
+\]</span></p>
+<p>donde la matriz del lado derecho se llama matriz dinámica.</p>
 </section>
-<section id="función-que-devuelve-la-energía" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Función que devuelve la energía</h1>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> SCFenergia(d<span class="op">=</span><span class="fl">0.7414</span>):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  H2 <span class="op">=</span> pyscf.gto.Mole(atom <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">      H 0.0000  0.0000 0.0000</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">      H 0.0000  0.0000 </span><span class="sc">{0:.4f}</span><span class="st"> </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">      """</span>.<span class="bu">format</span>(d),basis <span class="op">=</span> <span class="st">"STO-3G"</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  H2  <span class="op">=</span> H2.build()</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  rhf <span class="op">=</span> scf.RHF(H2)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  rhf.verbose <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  SCFe <span class="op">=</span> rhf.kernel()</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> SCFe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separación entre átomos de H</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> linspace(<span class="fl">0.4</span>,<span class="fl">3.0</span>,<span class="dv">301</span>) <span class="co"># angstroms</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-outputid="ab086130-b552-4de6-99d9-6461f54961d5" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluación de la Energía</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> <span class="bu">list</span>( <span class="bu">map</span>(SCFenergia,d))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-outputid="5da69341-34e2-4a46-9141-bbad32808636" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plot(d,E,<span class="st">'o-'</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>xlabel(<span class="st">'d [Å]'</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ylabel(<span class="st">'E [Ha]'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>Text(0, 0.5, 'E [Ha]')</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="molecula_H2_files/figure-html/cell-9-output-2.png" class="quarto-discovered-preview-image img-fluid"></p>
-</div>
-</div>
-</section>
-<a class="quarto-notebook-link" id="nblink-1" href="https://colab.research.google.com/drive/1Bdav-AzDmWBa4A2GMa4P5DkAMDX_F4dh?usp=sharing">Source: Abrir en colab</a></div>
+<section id="otra-notación" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="otra-notación"><span class="header-section-number">6.3</span> Otra notación</h2>
+<p>Alternativamente,</p>
+<p><span class="math display">\[
+\sum_{\beta j } -\omega^2 \delta_{\alpha \beta}\delta_{ij} u_{\beta j}+ \sum_{\beta j } \frac{1}{\sqrt{M_\beta M_\alpha}}\bigg[ \sum_{\vm} U_{\vn \alpha i }^{\vm \beta j} e^{ i\vk \cdot (\vRn -\vRm) }  \bigg] u_{\beta j} =0
+\]</span></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -574,14 +520,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./about.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Acerca</span></span>
+      <a href="./eqnonda.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ecuación de onda</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./vibra1d.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cadena Unidimensional</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

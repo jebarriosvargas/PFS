@@ -17,8 +17,9 @@ book:
           text: "pyscf H2"
         - vibra1d.qmd
         - eqnonda.qmd
+        - matrizdinamica.qmd
 format:
   html:
     theme: minty
-    fontsize: 0.6em
+    fontsize: 1.0em
     css: styles.css
