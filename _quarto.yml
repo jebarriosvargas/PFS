@@ -18,6 +18,8 @@ book:
         - vibra1d.qmd
         - eqnonda.qmd
         - matrizdinamica.qmd
+        - calorespecifico.qmd
+    - part: "Electrones"
 format:
   html:
     theme: minty
