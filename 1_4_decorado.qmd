@@ -1,0 +1,77 @@
+# Decorado (Motif)
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Decorado (definición)
+:::{.justify}
+La descripción de los objetos en una celda unitaria respecto a los puntos de referencia en una celda se conocen como decorado (motif).
+:::
+:::
+
+
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Estructura cristalina
+Una estructura cristalina se compone de una red y un decorado.
+:::
+
+Ejemplo: Panal de abeja
+
+$$
+\text{sitio 1: }\frac{1}{3}\vec{a}_1 + \frac{1}{3}\vec{a}_2\quad
+\text{sitio 2: }\frac{2}{3}\vec{a}_1 + \frac{2}{3}\vec{a}_2
+$$
+
+donde 
+
+$$
+\vec{a}_1=\left[\begin{array}{c}1\\0\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}\cos(60^\circ)\\\sin(60^\circ)\end{array} \right]
+$$
+
+
+```{python}
+#| label: fig-panaldeabeja
+#| fig-cap: "Ejemplo de estructura cristalina de panal de abeja."
+
+from pylab import *
+def GenerarRed(n_1,n_2,a_1,a_2):
+  # -- Desarrollo técnico --
+  # Malla de enteros
+  N1,N2 = meshgrid(n_1,n_2)
+  # Cambiar a columnas
+  N1    = N1.flatten()
+  N2    = N2.flatten()
+  N1y2 = column_stack((N1,N2))
+  # Agrupar los vectores de red
+  avec = [a_1,a_2]
+
+  # Tomar todas las combinaciones
+  Rx,Ry = dot( N1y2,avec ).T
+  return Rx,Ry
+
+a_1 = [1,0]
+a_2 = [1/2,sqrt(3)/2]
+
+n_1 = arange(-4,4)
+n_2 = arange(-4,4)
+
+Rx,Ry = GenerarRed(n_1,n_2,a_1,a_2)
+
+sitio1x = Rx + (1/3)*( a_1[0]+a_2[0] )
+sitio1y = Ry + (1/3)*( a_1[1]+a_2[1] )
+
+sitio2x = Rx + (2/3)*( a_1[0]+a_2[0] )
+sitio2y = Ry + (2/3)*( a_1[1]+a_2[1] )
+
+import plotly.graph_objects as go
+
+Data = [go.Scatter(x=sitio1x,y=sitio1y,mode='markers',showlegend=False),
+        go.Scatter(x=sitio2x,y=sitio2y,mode='markers',showlegend=False)]
+
+fig = go.Figure(data=Data)
+fig.update_xaxes(range=[-2,2])
+fig.update_yaxes(range=[-2,2])
+fig.update_layout(width=400, height=400)
+fig.show()
+
+
+```

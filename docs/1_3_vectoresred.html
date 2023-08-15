@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./molecula_H2.html" rel="next">
+<link href="./1_4_decorado.html" rel="next">
 <link href="./1_2_celdaprimitiva.html" rel="prev">
 <link href="./logoJEBV.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -179,6 +179,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectores de red</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_4_decorado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Decorado (Motif)</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -193,31 +199,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./molecula_H2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">pyscf H2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">pyscf H2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./vibra1d.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cadena Unidimensional</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Cadena Unidimensional</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./eqnonda.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Ecuación de onda</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Ecuación de onda</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./matrizdinamica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Matriz dinámica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Matriz dinámica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./calorespecifico.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Calor específico de los sólidos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Calor específico de los sólidos</span></span></a>
   </div>
 </li>
       </ul>
@@ -405,16 +411,61 @@ Observación.
 </div>
 </div>
 </div>
+<p>Una forma de determinar el área del paralelogramo formado por los vectores de la red es utilizando el determinante de la matriz <span class="math inline">\(A\)</span> couyos reglones son los vectores de la red.</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Sea <span class="math display">\[
+A= \left[ \begin{array}{c} \quad\vec{a}_1\quad\\ \vec{a}_2\end{array}\right] =
+\left[ \begin{array}{cc} a_{1x}&amp;a_{1y}\\a_{2x}&amp;a_{2y}  \end{array}  \right]
+\]</span> entonces el área del paralelogramo es, <span class="math display">\[
+\text{Área del paralelogramo} = {\rm det}\, A
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Calculemos el área de las diferentes opciones anteriores</p>
 <div class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>vec_a1 <span class="op">=</span> array([<span class="dv">5</span><span class="op">/</span><span class="dv">2</span>, sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">2</span>])</span>
-<span id="cb5-2"><a href="#cb5-2"></a>vec_a2 <span class="op">=</span> array([<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">2</span>])</span>
-<span id="cb5-3"><a href="#cb5-3"></a>A <span class="op">=</span> array( [vec_a1,vec_a2] )</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="bu">print</span> (det(A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Opción 1</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>a1 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>a2 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>vec_a1 <span class="op">=</span> array([       a1,         <span class="dv">0</span>])</span>
+<span id="cb5-5"><a href="#cb5-5"></a>θ <span class="op">=</span> radians(<span class="dv">60</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>vec_a2 <span class="op">=</span> array([a2<span class="op">*</span>cos(θ), a2<span class="op">*</span>sin(θ)])</span>
+<span id="cb5-7"><a href="#cb5-7"></a>A <span class="op">=</span> array( [vec_a1,vec_a2] )</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span> (<span class="st">"Opción 1"</span>, det(A))</span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># Opción 2</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>a1 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>a2 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>vec_a1 <span class="op">=</span> array([       a1,         <span class="dv">0</span>])</span>
+<span id="cb5-13"><a href="#cb5-13"></a>θ <span class="op">=</span> radians(<span class="dv">120</span>)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>vec_a2 <span class="op">=</span> array([a2<span class="op">*</span>cos(θ), a2<span class="op">*</span>sin(θ)])</span>
+<span id="cb5-15"><a href="#cb5-15"></a>A <span class="op">=</span> array( [vec_a1,vec_a2] )</span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="bu">print</span> (<span class="st">"Opción 1"</span>, det(A))</span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co"># Opción 3</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>a1 <span class="op">=</span> sqrt(<span class="fl">3.0</span>)</span>
+<span id="cb5-19"><a href="#cb5-19"></a>a2 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a>vec_a1 <span class="op">=</span> array([       <span class="dv">0</span>, a1])</span>
+<span id="cb5-21"><a href="#cb5-21"></a>θ <span class="op">=</span> radians(<span class="dv">120</span>)</span>
+<span id="cb5-22"><a href="#cb5-22"></a>vec_a2 <span class="op">=</span> array([a2<span class="op">*</span>cos(θ), a2<span class="op">*</span>sin(θ)])</span>
+<span id="cb5-23"><a href="#cb5-23"></a>A <span class="op">=</span> array( [vec_a1,vec_a2] )</span>
+<span id="cb5-24"><a href="#cb5-24"></a><span class="bu">print</span> (<span class="st">"Opción 3"</span>, det(A))</span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="co"># Opción 4</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a>vec_a1 <span class="op">=</span> array([<span class="dv">5</span><span class="op">/</span><span class="dv">2</span>, sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">2</span>])</span>
+<span id="cb5-27"><a href="#cb5-27"></a>vec_a2 <span class="op">=</span> array([<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">2</span>])</span>
+<span id="cb5-28"><a href="#cb5-28"></a>A <span class="op">=</span> array( [vec_a1,vec_a2] )</span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="bu">print</span> (<span class="st">"Opción 4"</span>, det(A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.8660254037844384</code></pre>
+<pre><code>Opción 1 0.8660254037844386
+Opción 1 0.8660254037844388
+Opción 3 0.8660254037844383
+Opción 4 0.8660254037844384</code></pre>
 </div>
 </div>
 
@@ -777,8 +828,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./molecula_H2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">pyscf H2</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./1_4_decorado.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Decorado (Motif)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

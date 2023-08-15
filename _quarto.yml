@@ -14,6 +14,7 @@ book:
         - 1_1_red.qmd
         - 1_2_celdaprimitiva.qmd
         - 1_3_vectoresred.qmd
+        - 1_4_decorado.qmd
     - part: "U2. Vibraciones"
       chapters:
         - href: molecula_H2.qmd
