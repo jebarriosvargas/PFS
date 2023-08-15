@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Propiedades Físicas de los Sólidos – molecula_h2</title>
+<title>Propiedades Físicas de los Sólidos - 2&nbsp; Vectores de red</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./vibra1d.html" rel="next">
-<link href="./1_2_vectoresred.html" rel="prev">
+<link href="./molecula_H2.html" rel="next">
+<link href="./1_1_red.html" rel="prev">
 <link href="./logoJEBV.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -103,6 +103,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
+<meta name="twitter:title" content="Propiedades Físicas de los Sólidos - 2&nbsp; Vectores de red">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="1_2_vectoresred_files/figure-html/fig-vectoresred2d1-output-1.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating">
@@ -114,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./molecula_H2.html">U2. Vibraciones</a></li><li class="breadcrumb-item"><a href="./molecula_H2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pyscf H2</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_1_red.html">U1. Estructuras periódicas</a></li><li class="breadcrumb-item"><a href="./1_2_vectoresred.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vectores de red</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -165,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./1_2_vectoresred.html" class="sidebar-item-text sidebar-link">
+  <a href="./1_2_vectoresred.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vectores de red</span></span></a>
   </div>
 </li>
@@ -182,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./molecula_H2.html" class="sidebar-item-text sidebar-link active">
+  <a href="./molecula_H2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pyscf H2</span></span></a>
   </div>
 </li>
@@ -222,14 +226,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://colab.research.google.com/drive/1Bdav-AzDmWBa4A2GMa4P5DkAMDX_F4dh?usp=sharing"><i class="bi bi-journal-code"></i>Abrir en colab</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#opción-1" id="toc-opción-1" class="nav-link active" data-scroll-target="#opción-1"><span class="header-section-number">2.1</span> Opción 1</a></li>
+  <li><a href="#opción-2" id="toc-opción-2" class="nav-link" data-scroll-target="#opción-2"><span class="header-section-number">2.2</span> Opción 2</a></li>
+  <li><a href="#opción-3" id="toc-opción-3" class="nav-link" data-scroll-target="#opción-3"><span class="header-section-number">2.3</span> Opción 3</a></li>
+  <li><a href="#opción-4" id="toc-opción-4" class="nav-link" data-scroll-target="#opción-4"><span class="header-section-number">2.4</span> Opción 4</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Molécula <span class="math inline">\(H_2\)</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vectores de red</span></h1>
 </div>
 
 
@@ -244,156 +257,151 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="quarto-embed-nb-cell">
-<div class="cell" data-execution_count="25">
+<div class="justify">
+<p>En el presente documento exploraremos que dada una red, <strong>los vectores de red no son únicos</strong>. Por efectos visuales, consideremos el ejemplo de la siguiente red bidimensional.</p>
+</div>
+<section id="opción-1" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="opción-1"><span class="header-section-number">2.1</span> Opción 1</h2>
+<p><span class="math display">\[
+\vec{a}_1=\left[\begin{array}{c}1\\0\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}\cos(60^\circ)\\\sin(60^\circ)\end{array} \right]
+\]</span></p>
+<div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Importación de las librerías</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#---</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span> <span class="co"># Librerías numpy,scipy y matplotlib</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> pyscf        <span class="co"># Librería pyscf</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">def</span> GraficadeRed(vec_a1,vec_a2):</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    n1,n2 <span class="op">=</span> meshgrid ( arange( <span class="op">-</span><span class="dv">12</span>, <span class="dv">13</span> ), arange( <span class="op">-</span><span class="dv">12</span>,<span class="dv">13</span> ) )</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    n1 <span class="op">=</span> n1.flatten()</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    n2 <span class="op">=</span> n2.flatten()</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    A <span class="op">=</span> array( [vec_a1,vec_a2] )</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    coefs <span class="op">=</span> column_stack((n1,n2))</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    red <span class="op">=</span> dot( coefs,A )</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a>    a1 <span class="op">=</span> sqrt(dot(vec_a1,vec_a1))</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    a2 <span class="op">=</span> sqrt(dot(vec_a2,vec_a2))</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>    fig,ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>((<span class="dv">6</span>,<span class="dv">6</span>)))</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    ax.scatter(red.T[<span class="dv">0</span>], red.T[<span class="dv">1</span>], label<span class="op">=</span><span class="ss">f"$a_1=</span><span class="sc">{</span>a1<span class="sc">:.2f}</span><span class="ss">, a_2=</span><span class="sc">{</span>a2<span class="sc">:.2f}</span><span class="ss">, θ=</span><span class="sc">{</span>rad2deg(θ)<span class="sc">:.1f}</span><span class="ss">$"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    ax.arrow(<span class="dv">0</span>,<span class="dv">0</span>,vec_a1[<span class="dv">0</span>],vec_a1[<span class="dv">1</span>],width<span class="op">=</span><span class="fl">0.08</span>,lw<span class="op">=</span><span class="dv">0</span>,label<span class="op">=</span><span class="st">"vec $a_1$"</span>,color<span class="op">=</span><span class="st">"red"</span>,length_includes_head<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-17"><a href="#cb1-17"></a>    ax.arrow(<span class="dv">0</span>,<span class="dv">0</span>,vec_a2[<span class="dv">0</span>],vec_a2[<span class="dv">1</span>],width<span class="op">=</span><span class="fl">0.08</span>,lw<span class="op">=</span><span class="dv">0</span>,label<span class="op">=</span><span class="st">"vec $a_2$"</span>,color<span class="op">=</span><span class="st">"blue"</span>,length_includes_head<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    ax.legend()</span>
+<span id="cb1-19"><a href="#cb1-19"></a>    ax.set_xlim(<span class="op">-</span><span class="fl">6.4</span>,<span class="fl">6.4</span>)</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    ax.set_ylim(<span class="op">-</span><span class="fl">3.4</span>,<span class="fl">3.4</span>)</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb1-22"><a href="#cb1-22"></a>    plt.show()</span>
+<span id="cb1-23"><a href="#cb1-23"></a>    <span class="cf">return</span> </span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a>a1 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>a2 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>vec_a1 <span class="op">=</span> array([       a1,         <span class="dv">0</span>])</span>
+<span id="cb1-28"><a href="#cb1-28"></a>θ <span class="op">=</span> radians(<span class="dv">60</span>)</span>
+<span id="cb1-29"><a href="#cb1-29"></a>vec_a2 <span class="op">=</span> array([a2<span class="op">*</span>cos(θ), a2<span class="op">*</span>sin(θ)])</span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>GraficadeRed(vec_a1,vec_a2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-</div>
-<section id="geometría-de-la-molécula-diatómica-rm-h_2" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Geometría de la molécula diatómica <span class="math inline">\({\rm H}_2\)</span></h1>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Átomo</th>
-<th>X[Å]</th>
-<th>Y[Å]</th>
-<th>Z[Å]</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>H</td>
-<td>0.0000</td>
-<td>0.0000</td>
-<td>0.0000</td>
-</tr>
-<tr class="even">
-<td>H</td>
-<td>0.0000</td>
-<td>0.0000</td>
-<td>0.7414</td>
-</tr>
-</tbody>
-</table>
-<div class="cell" data-execution_count="26">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Definición de la clase mole (molecule)</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># útil para manipular los parámetros </span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># y atributos de las integrales GTO.</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>H2 <span class="op">=</span> pyscf.gto.Mole(atom <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="st">    H 0.0000  0.0000 0.0000</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="st">    H 0.0000  0.0000 0.7414 </span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="st">    """</span>,basis <span class="op">=</span> <span class="st">"STO-3G"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co"># ¿Qué significa base STO-3G?</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># Define la molécula con la geometría </span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># y ahora puede calcularse la Energía</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>H2 <span class="op">=</span> H2.build()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-outputid="3cd6999e-bc3b-4fa6-def4-6cc80afdd44c" data-execution_count="27">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Define el método de cálculo con la geometría</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>rhf <span class="op">=</span> scf.RHF(H2)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># ¿Qué significa RHF?</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Restricted Hartree Fock</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Ejecuta el método definido y regresa la </span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># Energía convergida.</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>rhf.kernel(<span class="bu">print</span><span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># Las unidades de la energia son Hartree</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co"># 1 Hartree = 27.211 eV</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># Los Hartree son las unidades atomicas de la energia</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>converged SCF energy = -1.11668438708534</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>-1.1166843870853405</code></pre>
-</div>
-</div>
-</section>
-<section id="variación-de-la-geometría" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Variación de la geometría</h1>
-<div class="cell" data-outputid="b299ce71-d6de-4bfd-bb79-d800576216f9" data-execution_count="28">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>d <span class="op">=</span> <span class="fl">3.0</span> <span class="co"># angstroms</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>H2 <span class="op">=</span> pyscf.gto.Mole(atom <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="st">    H 0.0000  0.0000 0.0000</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="st">    H 0.0000  0.0000 </span><span class="sc">{0:.4f}</span><span class="st"> </span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="st">    """</span>.<span class="bu">format</span>(d),basis <span class="op">=</span> <span class="st">"STO-3G"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6"></a>H2  <span class="op">=</span> H2.build()</span>
-<span id="cb6-7"><a href="#cb6-7"></a>rhf <span class="op">=</span> scf.RHF(H2)</span>
-<span id="cb6-8"><a href="#cb6-8"></a>rhf.kernel()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>converged SCF energy = -0.656048251145591</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>-0.656048251145591</code></pre>
-</div>
-</div>
-</section>
-<section id="función-que-devuelve-la-energía" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Función que devuelve la energía</h1>
-<div class="cell" data-execution_count="29">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> SCFenergia(d<span class="op">=</span><span class="fl">0.7414</span>):</span>
-<span id="cb9-2"><a href="#cb9-2"></a>  H2 <span class="op">=</span> pyscf.gto.Mole(atom <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="st">      H 0.0000  0.0000 0.0000</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="st">      H 0.0000  0.0000 </span><span class="sc">{0:.4f}</span><span class="st"> </span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="st">      """</span>.<span class="bu">format</span>(d),basis <span class="op">=</span> <span class="st">"STO-3G"</span>)</span>
-<span id="cb9-6"><a href="#cb9-6"></a>  H2  <span class="op">=</span> H2.build()</span>
-<span id="cb9-7"><a href="#cb9-7"></a>  rhf <span class="op">=</span> scf.RHF(H2)</span>
-<span id="cb9-8"><a href="#cb9-8"></a>  rhf.verbose <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb9-9"><a href="#cb9-9"></a>  SCFe <span class="op">=</span> rhf.kernel()</span>
-<span id="cb9-10"><a href="#cb9-10"></a>  <span class="cf">return</span> SCFe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="30">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Separación entre átomos de H</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>d <span class="op">=</span> linspace(<span class="fl">0.4</span>,<span class="fl">3.0</span>,<span class="dv">301</span>) <span class="co"># angstroms</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-outputid="ab086130-b552-4de6-99d9-6461f54961d5" data-execution_count="31">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Evaluación de la Energía</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>E <span class="op">=</span> <span class="bu">list</span>( <span class="bu">map</span>(SCFenergia,d))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-outputid="5da69341-34e2-4a46-9141-bbad32808636" data-execution_count="32">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>plot(d,E,<span class="st">'o-'</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a>xlabel(<span class="st">'d [Å]'</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a>ylabel(<span class="st">'E [Ha]'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>Text(0, 0.5, 'E [Ha]')</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="molecula_H2_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
+<div id="fig-vectoresred2d1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="1_2_vectoresred_files/figure-html/fig-vectoresred2d1-output-1.png" width="495" height="279" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2.1: Ejemplo de red bidimensional</figcaption>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<a class="quarto-notebook-link" id="nblink-1" href="https://colab.research.google.com/drive/1Bdav-AzDmWBa4A2GMa4P5DkAMDX_F4dh?usp=sharing">Source: Abrir en colab</a></div>
+<section id="opción-2" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="opción-2"><span class="header-section-number">2.2</span> Opción 2</h2>
+<p>Alternativamente, podemos elegir</p>
+<p><span class="math display">\[
+\vec{a}_1=\left[\begin{array}{c}1\\0\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}\cos(120^\circ)\\\sin(120^\circ)\end{array} \right]
+\]</span></p>
+<p>y obtener la misma red</p>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>a1 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>a2 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>vec_a1 <span class="op">=</span> array([       a1,         <span class="dv">0</span>])</span>
+<span id="cb2-4"><a href="#cb2-4"></a>θ <span class="op">=</span> radians(<span class="dv">120</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>vec_a2 <span class="op">=</span> array([a2<span class="op">*</span>cos(θ), a2<span class="op">*</span>sin(θ)])</span>
+<span id="cb2-6"><a href="#cb2-6"></a>GraficadeRed(vec_a1,vec_a2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-vectoresred2d2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="1_2_vectoresred_files/figure-html/fig-vectoresred2d2-output-1.png" width="495" height="279" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2.2: Ejemplo de red bidimensional</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="opción-3" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="opción-3"><span class="header-section-number">2.3</span> Opción 3</h2>
+<p>Otra opción posible es <span class="math display">\[
+\vec{a}_1=\left[\begin{array}{c}0\\\sqrt{3}\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}\cos(120^\circ)\\\sin(120^\circ)\end{array} \right]
+\]</span></p>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>a1 <span class="op">=</span> sqrt(<span class="fl">3.0</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>a2 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>vec_a1 <span class="op">=</span> array([       <span class="dv">0</span>, a1])</span>
+<span id="cb3-4"><a href="#cb3-4"></a>θ <span class="op">=</span> radians(<span class="dv">120</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>vec_a2 <span class="op">=</span> array([a2<span class="op">*</span>cos(θ), a2<span class="op">*</span>sin(θ)])</span>
+<span id="cb3-6"><a href="#cb3-6"></a>GraficadeRed(vec_a1,vec_a2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-vectoresred2d3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="1_2_vectoresred_files/figure-html/fig-vectoresred2d3-output-1.png" width="495" height="279" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2.3: Ejemplo de red bidimensional</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="opción-4" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="opción-4"><span class="header-section-number">2.4</span> Opción 4</h2>
+<p>Una opción más es <span class="math display">\[
+\vec{a}_1=\left[\begin{array}{c}5/2\\\sqrt{3}/2\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}3/2\\\sqrt{3}/2\end{array} \right]
+\]</span></p>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>vec_a1 <span class="op">=</span> array([<span class="dv">5</span><span class="op">/</span><span class="dv">2</span>, sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">2</span>])</span>
+<span id="cb4-2"><a href="#cb4-2"></a>vec_a2 <span class="op">=</span> array([<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">2</span>])</span>
+<span id="cb4-3"><a href="#cb4-3"></a>GraficadeRed(vec_a1,vec_a2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-vectoresred2d4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="1_2_vectoresred_files/figure-html/fig-vectoresred2d4-output-1.png" width="495" height="279" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2.4: Ejemplo de red bidimensional</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Observación.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Notamos que en las diferentes opciones los vectores de red pueden ser de tamaños diferentes.</p>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -746,13 +754,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./1_2_vectoresred.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vectores de red</span></span>
+      <a href="./1_1_red.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Red</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./vibra1d.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cadena Unidimensional</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./molecula_H2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pyscf H2</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

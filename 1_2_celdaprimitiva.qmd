@@ -1,0 +1,136 @@
+# Celda primitiva
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Celda primitiva (definición)
+Es la celda unitaria que contiene un punto de la red.
+:::
+
+Hay dos formas de identificar la celda primitiva.
+
+::: {.callout-tip appearance="simple" icon=false collapse="false"}
+## A partir de los vectores de red
+:::{.justify}
+En 2D, la celda primitiva es el paralelogramo formado por los vectores de la red. 
+En 3D, la celda primitiva es el paralelepipedo formado por los vectores de la red.
+:::
+:::
+
+```{python}
+#| label: fig-celdas2d1
+#| fig-cap: "Ejemplo de red bidimensional"
+
+from pylab import *
+
+def GraficadeRedCell(vec_a1,vec_a2,polyx,polyy):
+    n1,n2 = meshgrid ( arange( -12, 13 ), arange( -12,13 ) )
+    n1 = n1.flatten()
+    n2 = n2.flatten()
+    A = array( [vec_a1,vec_a2] )
+    coefs = column_stack((n1,n2))
+    red = dot( coefs,A )
+
+    a1 = sqrt(dot(vec_a1,vec_a1))
+    a2 = sqrt(dot(vec_a2,vec_a2))
+
+    fig,ax = plt.subplots(figsize=((6,6)))
+    ax.scatter(red.T[0], red.T[1], label=f"$a_1={a1:.2f}, a_2={a2:.2f}, θ={rad2deg(θ):.1f}$")
+    ax.arrow(0,0,vec_a1[0],vec_a1[1],width=0.08,lw=0,label="vec $a_1$",color="red",length_includes_head=True)
+    ax.arrow(0,0,vec_a2[0],vec_a2[1],width=0.08,lw=0,label="vec $a_2$",color="blue",length_includes_head=True)
+
+
+    ax.fill(polyx,polyy,alpha=0.5,color="#50c878")
+
+    ax.legend()
+    ax.set_xlim(-6.4,6.4)
+    ax.set_ylim(-3.4,3.4)
+    ax.set_aspect('equal')
+    plt.show()
+    return 
+
+a1 = 1.0
+a2 = 1.0
+vec_a1 = array([       a1,         0])
+θ = radians(60)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+
+polyx = [0,vec_a1[0],vec_a1[0]+vec_a2[0],vec_a2[0],0]
+polyy = [0,vec_a1[1],vec_a1[1]+vec_a2[1],vec_a2[1],0]
+
+GraficadeRedCell(vec_a1,vec_a2,polyx,polyy)
+
+```
+
+
+::: {.callout-tip appearance="simple" icon=false collapse="false"}
+## Construcción de Wigner-Seitz
+:::{.justify}
+En 2D, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza su mediatriz (una línea perpendicular al segmento que pase por el punto medio). El área más pequeña encerrada por las mediatrices es la celda primitiva de Wigner-Seitz.
+En 3D, también, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza un plano perpendicular a cada segmento que pase por el punto medio. El volumen más pequeño encerrado por los planos es la celda primitiva de Wigner-Seitz.
+:::
+:::
+
+```{python}
+#| label: fig-celdas2d2
+#| fig-cap: "Ejemplo de red bidimensional"
+
+def FindInterection2D(v,w):
+    AA = np.array([v[0:2],w[0:2]])
+    bb = 0.5*np.array( [np.dot(v,v),np.dot(w,w)] )
+    return np.linalg.solve(AA, bb)
+
+def BuildWignerSeitz(vec_a1,vec_a2):
+    puntosall = []
+    for n in arange(-1,2):
+        for m in arange(-1,2):
+            w = n*vec_a1+m*vec_a2
+            if (m!=0):
+                xp = FindInterection2D( vec_a1,w)
+                xn = FindInterection2D(-vec_a1,w)
+            if (n!=0):
+                yp = FindInterection2D( vec_a2,w)
+                yn = FindInterection2D(-vec_a2,w)
+            puntosall.append(xp)
+            puntosall.append(yp)
+            puntosall.append(xn)
+            puntosall.append(yn)
+    puntosall = array(puntosall).T
+
+    # Selecciona sólo los que están a la mínima distancia
+    dist    = sum(puntosall.T*puntosall.T,axis=1)
+    mindist = min(dist)
+    ϵ       = 1e-4
+    logical = dist<(mindist+ϵ)
+    WignerSeitz = puntosall[:,logical]
+
+    # Quita los puntos repetidos (sólo funciona en 2D)
+    n   = 0
+    z   = WignerSeitz[0]+WignerSeitz[1]*1J
+    ang = angle(z)
+    while (n<len(z)):
+        l_ind    = ones(len(z),dtype=bool)
+        l_ind[n] = False
+        
+        arrlog = logical_and( abs(ang-ang[n])<ϵ, l_ind)
+
+        arrlog = array( arrlog==False)
+
+        z   = array(z[arrlog])
+        ang = angle(z)
+        n += 1
+        
+    indSort = argsort(ang)
+
+    WignerSeitz = array([real(z[indSort]),imag(z[indSort])])
+    return WignerSeitz
+
+a1 = 1.0
+a2 = 1.0
+vec_a1 = array([       a1,         0])
+θ = radians(60)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+
+WignerSeitz = BuildWignerSeitz(vec_a1,vec_a2)
+
+GraficadeRedCell(vec_a1,vec_a2,WignerSeitz[0],WignerSeitz[1])
+
+```

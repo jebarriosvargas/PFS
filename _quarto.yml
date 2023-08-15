@@ -3,15 +3,18 @@ project:
   output-dir: docs
 
 book:
-  title: "PFS"
+  title: "Propiedades Físicas de los Sólidos"
+  author: "JEBV"
   favicon: logoJEBV.png
   twitter-card: true
   chapters:
-    - href: index.qmd
-      text: Home
-    - href: about.qmd
-      text: Acerca
-    - part: "Vibraciones"
+    - index.qmd
+    - part: "U1. Estructuras periódicas"
+      chapters:
+        - 1_1_red.qmd
+        - 1_2_celdaprimitiva.qmd
+        - 1_3_vectoresred.qmd
+    - part: "U2. Vibraciones"
       chapters:
         - href: molecula_H2.qmd
           text: "pyscf H2"
@@ -19,9 +22,16 @@ book:
         - eqnonda.qmd
         - matrizdinamica.qmd
         - calorespecifico.qmd
-    - part: "Electrones"
+    - part: "U3. Electrones"
+
 format:
   html:
-    theme: minty
+    theme: 
+      light: minty
+      dark: darkly
     fontsize: 1.0em
     css: styles.css
+    code-fold: true
+    code-summary: "Mostrar código"
+    code-line-numbers: true
+    code-copy: true

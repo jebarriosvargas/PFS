@@ -1,0 +1,115 @@
+# Vectores de red
+
+:::{.justify}
+En el presente documento exploraremos que dada una red, **los vectores de red no son únicos**. Por efectos visuales, consideremos el ejemplo de la siguiente red bidimensional.
+:::
+
+## Opción 1
+$$
+\vec{a}_1=\left[\begin{array}{c}1\\0\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}\cos(60^\circ)\\\sin(60^\circ)\end{array} \right]
+$$
+
+```{python}
+#| label: fig-vectoresred2d1
+#| fig-cap: "Ejemplo de red bidimensional"
+
+from pylab import *
+
+def GraficadeRed(vec_a1,vec_a2):
+    n1,n2 = meshgrid ( arange( -12, 13 ), arange( -12,13 ) )
+    n1 = n1.flatten()
+    n2 = n2.flatten()
+    A = array( [vec_a1,vec_a2] )
+    coefs = column_stack((n1,n2))
+    red = dot( coefs,A )
+
+    a1 = sqrt(dot(vec_a1,vec_a1))
+    a2 = sqrt(dot(vec_a2,vec_a2))
+
+    fig,ax = plt.subplots(figsize=((6,6)))
+    ax.scatter(red.T[0], red.T[1], label=f"$a_1={a1:.2f}, a_2={a2:.2f}, θ={rad2deg(θ):.1f}$")
+    ax.arrow(0,0,vec_a1[0],vec_a1[1],width=0.08,lw=0,label="vec $a_1$",color="red",length_includes_head=True)
+    ax.arrow(0,0,vec_a2[0],vec_a2[1],width=0.08,lw=0,label="vec $a_2$",color="blue",length_includes_head=True)
+    ax.legend()
+    ax.set_xlim(-6.4,6.4)
+    ax.set_ylim(-3.4,3.4)
+    ax.set_aspect('equal')
+    plt.show()
+    return 
+
+a1 = 1.0
+a2 = 1.0
+vec_a1 = array([       a1,         0])
+θ = radians(60)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+
+GraficadeRed(vec_a1,vec_a2)
+
+```
+
+## Opción 2
+Alternativamente, podemos elegir 
+
+$$
+\vec{a}_1=\left[\begin{array}{c}1\\0\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}\cos(120^\circ)\\\sin(120^\circ)\end{array} \right]
+$$
+
+y obtener la misma red 
+
+```{python}
+#| label: fig-vectoresred2d2
+#| fig-cap: "Ejemplo de red bidimensional"
+
+a1 = 1.0
+a2 = 1.0
+vec_a1 = array([       a1,         0])
+θ = radians(120)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+GraficadeRed(vec_a1,vec_a2)
+``` 
+
+## Opción 3
+Otra opción posible es
+$$
+\vec{a}_1=\left[\begin{array}{c}0\\\sqrt{3}\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}\cos(120^\circ)\\\sin(120^\circ)\end{array} \right]
+$$
+
+```{python}
+#| label: fig-vectoresred2d3
+#| fig-cap: "Ejemplo de red bidimensional"
+
+a1 = sqrt(3.0)
+a2 = 1.0
+vec_a1 = array([       0, a1])
+θ = radians(120)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+GraficadeRed(vec_a1,vec_a2)
+``` 
+## Opción 4
+Una opción más es
+$$
+\vec{a}_1=\left[\begin{array}{c}5/2\\\sqrt{3}/2\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}3/2\\\sqrt{3}/2\end{array} \right]
+$$
+
+```{python}
+#| label: fig-vectoresred2d4
+#| fig-cap: "Ejemplo de red bidimensional"
+
+vec_a1 = array([5/2, sqrt(3)/2])
+vec_a2 = array([3/2, sqrt(3)/2])
+GraficadeRed(vec_a1,vec_a2)
+``` 
+
+::: {.callout-warning appearance="simple" icon=false collapse="false"}
+## Observación.
+Notamos que en las diferentes opciones los vectores de red pueden ser de tamaños diferentes. Ahora nos preguntamos, ¿qué pasa con el área del paralelogramo formado por los vectores de la red? ¿es diferente?
+:::
+
+
+
+```{python}
+vec_a1 = array([5/2, sqrt(3)/2])
+vec_a2 = array([3/2, sqrt(3)/2])
+A = array( [vec_a1,vec_a2] )
+print (det(A))
+```

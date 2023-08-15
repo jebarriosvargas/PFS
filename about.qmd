@@ -1,7 +1,0 @@
----
-title: "Acerca de"
-author: "JEBV"
----
-
-Acerca del sitio
-
