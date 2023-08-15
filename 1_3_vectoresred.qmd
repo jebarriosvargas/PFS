@@ -9,6 +9,7 @@ $$
 \vec{a}_1=\left[\begin{array}{c}1\\0\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}\cos(60^\circ)\\\sin(60^\circ)\end{array} \right]
 $$
 
+
 ```{python}
 #| label: fig-vectoresred2d1
 #| fig-cap: "Ejemplo de red bidimensional"
@@ -105,11 +106,50 @@ GraficadeRed(vec_a1,vec_a2)
 Notamos que en las diferentes opciones los vectores de red pueden ser de tamaños diferentes. Ahora nos preguntamos, ¿qué pasa con el área del paralelogramo formado por los vectores de la red? ¿es diferente?
 :::
 
+Una forma de determinar el área del paralelogramo formado por los vectores de la red es utilizando el determinante de la matriz $A$ couyos reglones son los vectores de la red.
 
+::: {.callout-tip appearance="simple" icon=false collapse="false"}
+Sea 
+$$
+A= \left[ \begin{array}{c} \quad\vec{a}_1\quad\\ \vec{a}_2\end{array}\right] =
+\left[ \begin{array}{cc} a_{1x}&a_{1y}\\a_{2x}&a_{2y}  \end{array}  \right]
+$$
+entonces el área del paralelogramo es,
+$$
+\text{Área del paralelogramo} = {\rm det}\, A 
+$$
+:::
+
+Calculemos el área de las diferentes opciones anteriores
 
 ```{python}
+# Opción 1
+a1 = 1.0
+a2 = 1.0
+vec_a1 = array([       a1,         0])
+θ = radians(60)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+A = array( [vec_a1,vec_a2] )
+print ("Opción 1", det(A))
+# Opción 2
+a1 = 1.0
+a2 = 1.0
+vec_a1 = array([       a1,         0])
+θ = radians(120)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+A = array( [vec_a1,vec_a2] )
+print ("Opción 1", det(A))
+# Opción 3
+a1 = sqrt(3.0)
+a2 = 1.0
+vec_a1 = array([       0, a1])
+θ = radians(120)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+A = array( [vec_a1,vec_a2] )
+print ("Opción 3", det(A))
+# Opción 4
 vec_a1 = array([5/2, sqrt(3)/2])
 vec_a2 = array([3/2, sqrt(3)/2])
 A = array( [vec_a1,vec_a2] )
-print (det(A))
+print ("Opción 4", det(A))
 ```
