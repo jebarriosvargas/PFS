@@ -1,0 +1,21 @@
+# Construcción sistemática de las estructuras cristalinas
+
+Antes de revisar la construcción sistemática es recomendable revisar el sitio <https://mathigon.org/course/transformations/introduction> con el fin de tener clara la definición de simetría.
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Simetría
+Un objeto es simétrico si es invariante ante la aplicación de una cierta transformación.
+::: 
+
+Los pasos de la construcción sistemática son cuatro:
+1. Calsificar las celdas unitarias 
+2. Identificar las redes de Bravais
+3. Agregar las simetrías puntuales
+4. Agregar la combinación de traslaciones con simetrías puntuales.
+
+
+
+
+
+
+<http://www.quadibloc.com/math/tilint.htm>

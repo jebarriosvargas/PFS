@@ -1,0 +1,240 @@
+# Análisis de Fourier
+
+$$
+\definecolor{magenta}{RGB}{255,0,144}
+\newcommand{\cparentesis}[1]{ {\color{magenta} #1} }
+\newcommand{\iprn}{\cparentesis{(}}
+\newcommand{\fprn}{\cparentesis{)}}
+\newcommand{\ii}{{\rm i}}
+$$
+
+El objetivo de la presente sección es generar una intuición de la siguiente afirmación:
+> La red recíproca es la transformada de Fourier de la red real.
+
+## Serie de Fourier
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Serie de Fourier (real)
+Una función periódica, $f(x)$, en el intervalor $[-L/2,L/2]$ puede escribirse como la serie (*una serie es una suma infinita de terminos*),
+
+$$
+\begin{equation*}
+f(x)=\frac{a_0}{2} + \sum_{n=1}^{\infty} \left[ a_n \cos \left( \frac{2n\pi}{L}x \right) + b_n \sin \left( \frac{2n\pi}{L}x \right) \right]
+\end{equation*}
+$$
+
+donde
+
+$$
+\begin{equation*}
+a_0 = \frac{2}{L} \int\limits_{-L/2}^{L/2} f(x) dx
+\end{equation*}
+$$
+
+$$
+\begin{equation*}
+a_n = \frac{2}{L} \int\limits_{-L/2}^{L/2} f(x) \cos \left( \frac{2n\pi}{L}x \right) dx
+\end{equation*}
+$$
+
+$$
+\begin{equation*}
+b_n = \frac{2}{L} \int\limits_{-L/2}^{L/2} f(x) \sin \left( \frac{2n\pi}{L}x \right) dx
+\end{equation*}
+$$
+
+
+:::
+
+
+Definimos la suma de Fourier, $s_{N}$, como la serie truncada hasta el término $N$ de la siguiente forma:
+
+$$
+\begin{equation*}
+s_{N}=\frac{a_0}{2} + \sum_{n=1}^{N} \left[ a_n \cos \left( \frac{2n\pi}{L}x \right) + b_n \sin \left( \frac{2n\pi}{L}x \right) \right] \approx f(x)
+\end{equation*}
+$$
+
+### Ejemplo: recta
+
+$$
+f(x) = x\quad \text{en el intervalo} \quad [-L/2,L/2]
+$$
+
+
+```{python}
+from pylab import *
+
+a = -10.0
+b = 10.0
+N = 6
+
+L = b-a
+
+# Tomar 100 puntos entre a y b, y los guarda
+# en la variable x
+x = linspace(a,b,1000)
+f = x
+
+# Coeficientes de Fourier
+
+a_0 = 2.0/L*trapz(f,x)
+# Con el fin de realizar la integral utilizamos
+# la función trapz( ). tapz realiza la integral 
+# numérica aporximando el área bajo la curva 
+# por trapecios.
+
+# SF: Suma de Fourier
+SF  = zeros_like(x) 
+SF += a_0/2.0
+
+for n in range(1,N+1):
+    a_n = 2.0/L*trapz( f*cos(2*n*pi/L*x),x)
+    b_n = 2.0/L*trapz( f*sin(2*n*pi/L*x),x)
+    SF += a_n*cos(2*n*pi/L*x)+b_n*sin(2*n*pi/L*x)
+
+# SF2: Suma de Fourier
+SF2  = zeros_like(x) 
+SF2 += a_0/2.0
+
+for n in range(1,2*N+1):
+    a_n = 2.0/L*trapz( f*cos(2*n*pi/L*x),x)
+    b_n = 2.0/L*trapz( f*sin(2*n*pi/L*x),x)
+    SF2 += a_n*cos(2*n*pi/L*x)+b_n*sin(2*n*pi/L*x)
+
+fig,ax = plt.subplots(figsize=(4,4))    
+ax.plot(x,SF,color='r',label=f"sN, N={N}")
+ax.plot(x,SF2,color='b',label=f"sN, N={2*N}")
+ax.plot(x,f,ls='-',lw=2, color='k',label='f(x)=x')
+ax.set_xticks([-L/2,0,L/2])
+ax.set_yticks([-L/2,0,L/2])
+ax.set_xticklabels(["-L/2","0","L/2"])
+ax.set_yticklabels(["-L/2","0","L/2"])
+
+ax.legend()
+
+plt.show();
+```
+
+### Ejemplo: función escalón
+
+```{python}
+from scipy import integrate
+from matplotlib import pyplot as plt
+import numpy as np
+
+a =-10.0
+b = 10.0
+
+N = 11
+
+T=b-a
+
+x=np.linspace(-10,10,10000)
+f = piecewise(x,x>=0,[1,0])
+
+a_0 = 2.0/T*integrate.quad(lambda x: np.piecewise(x,x>=0,[1,0]),a,b)[0]
+y = a_0/2.0*x**0.0
+
+# Coeficientes de Fourier
+
+a_0 = 2.0/L*trapz(f,x)
+
+# SF: Suma de Fourier
+SF  = zeros_like(x) 
+SF += a_0/2.0
+
+for n in range(1,N+1):
+    a_n = 2.0/L*trapz( f*cos(2*n*pi/L*x),x)
+    b_n = 2.0/L*trapz( f*sin(2*n*pi/L*x),x)
+    SF = SF + a_n*cos(2*n*pi/L*x)+b_n*sin(2*n*pi/L*x)
+
+
+fig,ax = plt.subplots(figsize=(4,4))
+ax.plot(x,SF,color='r',label=f"sN, N={N}")
+ax.plot(x,f,label="Step function")
+ax.set_xticks([-L/2,0,L/2])
+ax.set_yticks([0,1])
+ax.set_xticklabels(["-L/2","0","L/2"])
+
+
+ax.legend()
+
+plt.show();
+    
+```
+
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Serie de Fourier (compleja)
+Una función periódica, $f(x)$, en el intervalor $[-L/2,L/2]$ puede escribirse como la serie (*una serie es una suma infinita de terminos*),
+
+$$
+\begin{equation*}
+f(x) = \lim_{N\to \infty} s_{N} = \lim_{N\to \infty} \sum_{n=-N}^{N} c_{n} e^{i\frac{2\pi}{L} nx}
+\end{equation*}
+$$
+
+donde 
+
+$$
+\begin{equation}
+c_n = c_{Rn}+ic_{In}
+\end{equation}
+$$
+$$
+\begin{equation*}
+c_{Rn} = \frac{1}{L} \int\limits_{-L/2}^{L/2} {\rm Re}\{f(x)\} e^{-i\frac{2\pi}{L} nx} dx
+\end{equation*}
+$$
+$$
+\begin{equation*}
+c_{In} = \frac{1}{L} \int\limits_{-L/2}^{L/2} {\rm Im}\{f(x)\} e^{-i\frac{2\pi}{L} nx} dx
+\end{equation*}
+$$
+:::
+
+
+Notamos que $c_n$ es complejo. Alternativamente podemos escribir 
+$$
+c_n=\langle n|f\rangle 
+$$
+
+Definimos $k_n\equiv 2\pi n /L$, entonces podemos escribir
+
+$$
+e^{\ii\frac{2\pi}{L}} = e^{\ii k_n x} \rightarrow |n\rangle 
+$$
+
+
+Utilizando la notación de bra-ket
+
+$$
+f(x) = \sum_{k_n} |n\rangle \langle n | f\rangle
+$$
+
+Definimos
+
+$$
+\tilde{f}_{k_n}\equiv L c_n = \int_{-L/2}^{L/2} e^{-\ii k_n x} f(x) dx
+$$
+Entonces,
+$$
+f(x) = \frac{1}{L} \sum_{k_n} \tilde{f}_{k_n} e^{\ii k_n x}
+$$
+
+El siguiente paso es extender la definisición de la serie de Fourier del intervalo $(-L/2,L/2)$ a $(-\infty,\infty)$.
+
+¿Qué pasa con $k_n=2\pi n/L$ cuando $L$ se hace más grande?
+
+> Un continuo de puntos
+
+En general,
+$$
+\Delta k = k_{n+1}-k_n = \frac{2\pi}{L}
+$$
+
+Analicemos $\sum_{k_n}$
+
+## Transformada de Fourier
+

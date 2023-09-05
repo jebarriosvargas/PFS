@@ -15,6 +15,9 @@ book:
         - 1_2_celdaprimitiva.qmd
         - 1_3_vectoresred.qmd
         - 1_4_decorado.qmd
+        - 1_5_construccionsistematica.qmd
+        - 1_6_redreciproca.qmd
+        - 1_7_fourier.qmd
     - part: "U2. Vibraciones"
       chapters:
         - href: molecula_H2.qmd

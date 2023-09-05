@@ -1,0 +1,106 @@
+# Red recíproca
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Red recíproca
+Un punto de la red recíproca $\vec{G}$ cumple que $e^{\ii \vec{G}\cdot \vec{R}}=1$ donde $\vec{R}$ son los puntos de la red real.
+:::
+
+Notamos que los puntos $\vec{G}$ que cumplen la definición tienen dimensiones de 
+$$
+[\vec{G}] = \frac{1}{\text{longitud}}\,,
+$$
+es decir las dimensiones recíprocas de la red $\vec{R}$,
+$$
+[\vec{R}]= \text{longitud}\,.
+$$
+
+Con el fin de determinar los puntos de la red recíproca, $\vec{G}$ consideramos las siguientes dos suposiciones
+
+1. Los puntos $\{ \vec{G} \}$ forman una red, entonces podemos escribirlos como una combinación lineal de coeficientes enteros de vectores linealmente independientes.
+
+$$
+\vec{G}=m_1\vec{b}_1+m_2\vec{b}_2+m_3\vec{b}_3
+$$
+
+2. Los vectores base de la red recíproca cumplen que
+
+$$
+\vec{a}_i\cdot \vec{b}_j = 2\pi \delta_{ij}
+$$
+donde $\vec{a}_i$ son los vectores base de la red $\{\vec{R}\}$.
+
+
+Identificamos que podemos escribir la relación previa de forma ordenada como matriz
+
+$$
+\left[
+\begin{array}{ccc}
+\vec{a}_1\cdot \vec{b}_1 & \vec{a}_1\cdot \vec{b}_2 & \vec{a}_1\cdot \vec{b}_3 \\
+\vec{a}_2\cdot \vec{b}_1 & \vec{a}_2\cdot \vec{b}_2 & \vec{a}_2\cdot \vec{b}_3 \\
+\vec{a}_3\cdot \vec{b}_1 & \vec{a}_3\cdot \vec{b}_2 & \vec{a}_3\cdot \vec{b}_3 
+\end{array}
+\right]=\left[
+\begin{array}{ccc}
+2\pi & 0 & 0\\
+0 & 2\pi & 0 \\
+0 & 0 & 2\pi  
+\end{array}
+\right]
+$$
+El lado izquierdo podemos escribirlo como el producto de dos matrices
+
+$$
+\left[
+\begin{array}{c}
+\qquad \vec{a}_1 \qquad \\
+------\\
+\qquad \vec{a}_2 \qquad \\
+------\\
+\qquad \vec{a}_3 \qquad \\
+\end{array}
+\right]\left[
+\begin{array}{ccccc}
+&|&&|&\\
+&|&&|&\\
+\vec{b}_1&|&\vec{b}_2&|&\vec{b_3}\\
+&|&&|&\\
+&|&&|&
+\end{array}
+\right]=\left[
+\begin{array}{ccc}
+2\pi & 0 & 0\\
+0 & 2\pi & 0 \\
+0 & 0 & 2\pi  
+\end{array}
+\right]
+$$
+Definimos las matrices
+$$
+A\equiv \left[
+\begin{array}{c}
+\qquad \vec{a}_1 \qquad \\
+------\\
+\qquad \vec{a}_2 \qquad \\
+------\\
+\qquad \vec{a}_3 \qquad \\
+\end{array}
+\right]
+$$
+y 
+$$
+B\equiv \left[\begin{array}{ccccc}
+&|&&|&\\
+&|&&|&\\
+\vec{b}_1&|&\vec{b}_2&|&\vec{b_3}\\
+&|&&|&\\
+&|&&|&
+\end{array}
+\right]
+$$
+Por lo que,
+
+$$
+AB = 2\pi \mathbb{I}
+$$
+donde $\mathbb{I}$ es la matriz identidad. 
+
