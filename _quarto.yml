@@ -18,6 +18,7 @@ book:
         - 1_5_construccionsistematica.qmd
         - 1_6_redreciproca.qmd
         - 1_7_fourier.qmd
+        - 1_8_particulalibre.qmd
     - part: "U2. Vibraciones"
       chapters:
         - href: molecula_H2.qmd
@@ -27,6 +28,7 @@ book:
         - matrizdinamica.qmd
         - calorespecifico.qmd
     - part: "U3. Electrones"
+    - part: "U4. Magnetismo"
 
 format:
   html:
