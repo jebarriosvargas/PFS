@@ -11,7 +11,7 @@ $$
 ::: {.callout-note appearance="simple" icon=false collapse="true"}
 ## Resolución de la partícula libre
 
-Una partícula libre es aquella que no está sometida a una fuerza, por lo que la energía potencial de una partícula es constante para todo valor de $x$ ($F_x=dU/dx=0$ $\Rightarrow U\iprn x \fprn = {\rm constante}$). Dado que tenemos la libertad de elección del nivel cero de energía, podemos elegir que $U\iprn x \fprn = {\rm cte.} = 0$, por lo que la ecuación de Schrödinger independiente (@eq-schroedinger-independiente-tiempo) esta dada por,
+Una partícula libre es aquella que no está sometida a una fuerza, por lo que la energía potencial de una partícula es constante para todo valor de $x$ ($F_x=dU/dx=0$ $\Rightarrow U\iprn x \fprn = {\rm constante}$). Dado que tenemos la libertad de elección del nivel cero de energía, podemos elegir que $U\iprn x \fprn = {\rm cte.} = 0$, por lo que la ecuación de Schrödinger independiente esta dada por,
 
 $$
 \begin{align}
