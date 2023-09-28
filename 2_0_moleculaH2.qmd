@@ -1,0 +1,9 @@
+# Molécula de Hidrógeno
+
+El Hamiltoniano de la molécula de hidrógeno es:
+
+$$
+\begin{align}
+\hat{H}_{\rm H_2}
+\end{align}
+$$

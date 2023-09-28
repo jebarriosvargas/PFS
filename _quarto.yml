@@ -21,15 +21,17 @@ book:
         - 1_8_particulalibre.qmd
     - part: "U2. Vibraciones"
       chapters:
+        - 2_0_moleculaH2.qmd
         - href: 2_1_molecula_H2.qmd
           text: "pyscf H2"
-        - vibra1d.qmd
-        - eqnonda.qmd
-        - matrizdinamica.qmd
-        - calorespecifico.qmd
+        - 2_2_vibra1d.qmd
+        - 2_3_eqnonda.qmd
+        - 2_4_matrizdinamica.qmd
+        - 2_5_calorespecifico.qmd
     - part: "U3. Electrones"
+      chapters:
+        - 3_1_electroneslibres.qmd
     - part: "U4. Magnetismo"
-
 format:
   html:
     theme: 
