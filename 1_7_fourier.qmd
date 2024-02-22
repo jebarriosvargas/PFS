@@ -223,7 +223,7 @@ $$
 f(x) = \frac{1}{L} \sum_{k_n} \tilde{f}_{k_n} e^{\ii k_n x}
 $$
 
-El siguiente paso es extender la definisición de la serie de Fourier del intervalo $(-L/2,L/2)$ a $(-\infty,\infty)$.
+El siguiente paso es extender la definición de la serie de Fourier del intervalo $(-L/2,L/2)$ a $(-\infty,\infty)$.
 
 ¿Qué pasa con $k_n=2\pi n/L$ cuando $L$ se hace más grande?
 
@@ -235,6 +235,10 @@ $$
 $$
 
 Analicemos $\sum_{k_n}$
+
+$$
+\sum_{k_n} 1 = \sum_{k_n} \frac{\Delta k}{\Delta k} = \frac{1}{\Delta k } \sum_{k_n} = \frac{L}{2\pi} \sum_{k_n}\Delta k \quad \Rightarrow \lim_{L\to \infty} \rightarrow \quad \frac{L}{2\pi} \int_{-\infty}^{\infty} dk
+$$
 
 ## Transformada de Fourier
 

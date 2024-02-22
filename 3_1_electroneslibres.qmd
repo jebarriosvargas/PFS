@@ -1,1 +1,47 @@
 # Electrones libres
+
+Los electrones en las capas 
+
+
+
+
+$$
+\begin{align}
+    E_{\rm sólido}=&\left( {\color{RoyalPurple}\begin{array}{c}
+         \text{Energía}  \\
+         \text{cinética} \\
+         \text{núcleos}
+    \end{array}} \right)+ \left( {\color{Orange} \begin{array}{c}
+         \text{Energía}  \\
+         \text{cinética} \\
+         \text{electrones}
+    \end{array}} \right) + \left( {\color{Fuchsia}\begin{array}{c}
+         \text{Energía}  \\
+         \text{potencial} \\
+         \text{electrostática} \\
+         \text{núcleo-núcleo}
+    \end{array}} \right) \nonumber\\
+    +& \left( {\color{Maroon}\begin{array}{c}
+         \text{Energía}  \\
+         \text{potencial} \\
+         \text{electrostática} \\
+         \text{electrón-electrón}
+    \end{array} } \right)
+    + \left( {\color{PineGreen}\begin{array}{c}
+         \text{Energía}  \\
+         \text{potencial} \\
+         \text{electrostática} \\
+         \text{núcleo-electrón}
+    \end{array} }\right)
+\end{align}
+$$
+
+$$
+\begin{align}
+\hat{H}_{\rm sólido} =& \left( {\color{RoyalPurple}-\frac{\hbar}{2}\sum_\alpha \frac{1}{m_\alpha} \nabla_\alpha^2 } \right)+ \left( {\color{Orange} -\frac{\hbar^2}{2m_e} \sum_i \nabla_i^2} \right) \nonumber\\
++& \left( {\color{Fuchsia} \sum_\alpha \sum_\beta \frac{Z_\alpha Z_\beta e^2}{4\pi\varepsilon_0 r_{\alpha\beta}} } \right) - \left( {\color{PineGreen} \sum_\alpha \sum_i \frac{Z_\alpha e^2}{4\pi\epsilon_0 r_{i\alpha}}  }\right) \nonumber\\
+    +& \left( {\color{Maroon} \sum_{j}\sum_{i>j} \frac{e^2}{4\pi\varepsilon_0 r_{ij}} } \right)
+\end{align}
+$$
+
+\noindent donde $\alpha$ y $\beta$ son índices para los núcleos, e $i$ y $j$ son índices para los electrones. $Z_\alpha$ y $Z_\beta$ es el número atómico de los átomos. $m_\alpha$ y $m_e$ son las masas del núcleo y del electrón, respectivamente.
