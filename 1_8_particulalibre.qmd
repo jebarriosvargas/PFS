@@ -342,7 +342,7 @@ $$
 $$
 
 #### Visualización ${\rm Re}\Psi$ y ${\rm Im}\Psi$
-Recordemos que la función de onda depende del tiempo y definimos $\omega\equiv E/\hbar $
+Recordemos que la función de onda depende del tiempo y definimos $\omega = E / \hbar $
 
 $$
 \Psi \iprn x,t \fprn = e^{-\ii \omega t } e^{ -{\rm i}k x }
