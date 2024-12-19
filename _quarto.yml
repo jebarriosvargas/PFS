@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: docs
+  render:
+    - "*.qmd"
 
 book:
   title: "Propiedades Físicas de los Sólidos"
@@ -37,7 +39,7 @@ format:
     theme: 
       light: minty
       dark: darkly
-    fontsize: 1.0em
+    fontsize: 0.8em
     css: styles.css
     code-fold: true
     code-summary: "Mostrar código"

@@ -141,18 +141,23 @@ ax[1].set_xlabel('x (m)');
 :::
 
 #### Visualización ${\rm Re}\Psi$
-Recordemos que la función de onda depende del tiempo y definimos $\omega\equiv E/\hbar $
+
+Recordemos que la función de onda depende del tiempo y definimos 
+
+$$
+\omega = E/\hbar
+$$
 
 $$
 \Psi \iprn x,t \fprn = e^{-\ii \omega t } e^{ {\rm i}k x }
 $$
 
 ::: {.callout-note appearance="simple" icon=false collapse="true"}
-## Viualización ${\rm Re}\Psi$
+## Visualización ${\rm Re}\Psi$
 
 ```{python}
 from pylab import *
-import pandas as pd
+# import pandas as pd
 import plotly.graph_objects as go
 
 # Masa de un electrón
@@ -163,6 +168,7 @@ m = 9.1093837e-31  # (kg)
 E = 10*1.602e-19 # (J)
 k = sqrt( 2*m*E/(ħ*ħ) )
 ω   = E/ħ
+π  = pi
 print( "Caso. Un electrón con energía de 10 eV.")
 print( f"k = {k:.3e} (1/m)")
 print( f"ω = {ω:.3e} (1/s)" )
@@ -179,8 +185,10 @@ ReΨ = Ψ.real
 
 cuadros = []
 for n in range(1,npts_t):
-    Ψ   = exp(-1J*ω*T[n])*exp(1J*k*X)
+    Ψ = exp(-1J*ω*T[n])*exp(1J*k*X)
     cuadros.append( go.Frame(data=[go.Scatter(x=X, y=Ψ.real,mode="lines")],layout=go.Layout(title=f"t={T[n]:.2f} (fs)")) )
+
+cuadros = list(cuadros)
 
 fig = go.Figure(
     data=[go.Scatter(x=X, y=ReΨ,mode="lines")],
@@ -189,7 +197,7 @@ fig = go.Figure(
         xaxis_title="x (nm)",
         yaxis_title="Re[Ψ]",
         updatemenus=[dict(type="buttons",
-                          x=1.0,y=1.1,
+                          x=0.5,y=1.1,
                           buttons=[dict(label="Reproducir",
                                         method="animate",
                                         args=[None,
@@ -207,11 +215,11 @@ fig.show()
 #### Visualización ${\rm Im}\Psi$
 
 ::: {.callout-note appearance="simple" icon=false collapse="true"}
-## Viualización ${\rm Re}\Psi$
+## Visualización ${\rm Re}\Psi$
 
 ```{python}
 from pylab import *
-import pandas as pd
+# import pandas as pd
 import plotly.graph_objects as go
 
 # Masa de un electrón
@@ -222,6 +230,7 @@ m = 9.1093837e-31  # (kg)
 E = 10*1.602e-19 # (J)
 k = sqrt( 2*m*E/(ħ*ħ) )
 ω   = E/ħ
+π  = pi
 print( "Caso. Un electrón con energía de 10 eV.")
 print( f"k = {k:.3e} (1/m)")
 print( f"ω = {ω:.3e} (1/s)" )
@@ -248,7 +257,7 @@ fig = go.Figure(
         xaxis_title="x (nm)",
         yaxis_title="Im[Ψ]",
         updatemenus=[dict(type="buttons",
-                          x=1.0,y=1.1,
+                          x=0.5,y=1.0,
                           buttons=[dict(label="Reproducir",
                                         method="animate",
                                         args=[None,
@@ -271,7 +280,7 @@ fig.show()
 ## Viualización $({\rm Re}\Psi, {\rm Im}\Psi)$
 ```{python}
 from pylab import *
-import pandas as pd
+# import pandas as pd
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
 
@@ -316,7 +325,7 @@ fig = go.Figure(
         title="t=0.00 (fs)",
         xaxis_title="x (nm)",
         updatemenus=[dict(type="buttons",
-                          x=1.0,y=1.1,
+                          x=0.5,y=1.0,
                           buttons=[dict(label="Reproducir",
                                         method="animate",
                                         args=[None,
@@ -342,7 +351,12 @@ $$
 $$
 
 #### Visualización ${\rm Re}\Psi$ y ${\rm Im}\Psi$
-Recordemos que la función de onda depende del tiempo y definimos $\omega = E / \hbar $
+
+Recordemos que la función de onda depende del tiempo y definimos 
+$$ 
+\omega =E/\hbar
+$$
+
 
 $$
 \Psi \iprn x,t \fprn = e^{-\ii \omega t } e^{ -{\rm i}k x }
@@ -393,7 +407,7 @@ fig = go.Figure(
         xaxis_title="x (nm)",
         yaxis_title="Re[Ψ]",
         updatemenus=[dict(type="buttons",
-                          x=1.0,y=1.1,
+                          x=0.5,y=1.0,
                           buttons=[dict(label="Reproducir",
                                         method="animate",
                                         args=[None,

@@ -4,6 +4,6 @@ El Hamiltoniano de la molécula de hidrógeno es:
 
 $$
 \begin{align}
-\hat{H}_{\rm H_2}
+\hat{H}_{\rm H_2} = \frac{\hat{P}}{2M_1}
 \end{align}
 $$
