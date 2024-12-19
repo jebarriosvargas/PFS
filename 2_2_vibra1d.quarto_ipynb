@@ -45,7 +45,7 @@
         "::: {.callout-note appearance=\"simple\" icon=false collapse=\"true\"}\n",
         "## $k = 0.2\\pi/a$\n"
       ],
-      "id": "f62ca58f"
+      "id": "d0c039eb"
     },
     {
       "cell_type": "code",
@@ -129,7 +129,7 @@
         "\n",
         "fig.show()"
       ],
-      "id": "fed622f6",
+      "id": "67600f97",
       "execution_count": null,
       "outputs": []
     },
@@ -143,7 +143,7 @@
         "::: {.callout-note appearance=\"simple\" icon=false collapse=\"true\"}\n",
         "## $k = -0.2\\pi/a$\n"
       ],
-      "id": "e4938bce"
+      "id": "e4323d07"
     },
     {
       "cell_type": "code",
@@ -227,7 +227,7 @@
         "\n",
         "fig.show()"
       ],
-      "id": "8bfa13ef",
+      "id": "01db4b5e",
       "execution_count": null,
       "outputs": []
     },
@@ -241,7 +241,7 @@
         "::: {.callout-note appearance=\"simple\" icon=false collapse=\"true\"}\n",
         "## $k = \\pi/a$\n"
       ],
-      "id": "ed2539de"
+      "id": "546bd2d2"
     },
     {
       "cell_type": "code",
@@ -325,7 +325,7 @@
         "\n",
         "fig.show()"
       ],
-      "id": "7b1fc497",
+      "id": "e8416d8f",
       "execution_count": null,
       "outputs": []
     },
@@ -340,7 +340,7 @@
         "::: {.callout-note appearance=\"simple\" icon=false collapse=\"true\"}\n",
         "## $k = 0.2\\pi/a+2\\pi/a$\n"
       ],
-      "id": "a7a9731f"
+      "id": "32750d91"
     },
     {
       "cell_type": "code",
@@ -424,7 +424,7 @@
         "\n",
         "fig.show()"
       ],
-      "id": "f99d085f",
+      "id": "fba28c0f",
       "execution_count": null,
       "outputs": []
     },
@@ -434,7 +434,7 @@
       "source": [
         ":::"
       ],
-      "id": "fda5cf84"
+      "id": "53e24bef"
     }
   ],
   "metadata": {
