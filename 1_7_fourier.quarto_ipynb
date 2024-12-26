@@ -67,7 +67,7 @@
         "f(x) = x\\quad \\text{en el intervalo} \\quad [-L/2,L/2]\n",
         "$$\n"
       ],
-      "id": "c632bedd"
+      "id": "070f9a6c"
     },
     {
       "cell_type": "code",
@@ -125,7 +125,7 @@
         "\n",
         "plt.show();"
       ],
-      "id": "01633d57",
+      "id": "734aea29",
       "execution_count": null,
       "outputs": []
     },
@@ -135,7 +135,7 @@
       "source": [
         "### Ejemplo: función escalón\n"
       ],
-      "id": "36ce6519"
+      "id": "baecda8b"
     },
     {
       "cell_type": "code",
@@ -184,7 +184,7 @@
         "\n",
         "plt.show();\n"
       ],
-      "id": "02de386e",
+      "id": "dd42dac2",
       "execution_count": null,
       "outputs": []
     },
@@ -269,7 +269,7 @@
         "\n",
         "## Transformada de Fourier\n"
       ],
-      "id": "1660db19"
+      "id": "8833492d"
     }
   ],
   "metadata": {

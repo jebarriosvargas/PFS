@@ -15,7 +15,7 @@
         "\\vec{a}_1=\\left[\\begin{array}{c}1\\\\0\\end{array} \\right] \\quad \\text{y} \\quad \\vec{a}_2=\\left[\\begin{array}{c}\\cos(60^\\circ)\\\\\\sin(60^\\circ)\\end{array} \\right]\n",
         "$$\n"
       ],
-      "id": "b18ad461"
+      "id": "6d27767b"
     },
     {
       "cell_type": "code",
@@ -73,7 +73,7 @@
         "\n",
         "y obtener la misma red \n"
       ],
-      "id": "16ca5e1d"
+      "id": "ced72b19"
     },
     {
       "cell_type": "code",
@@ -103,7 +103,7 @@
         "\\vec{a}_1=\\left[\\begin{array}{c}0\\\\\\sqrt{3}\\end{array} \\right] \\quad \\text{y} \\quad \\vec{a}_2=\\left[\\begin{array}{c}\\cos(120^\\circ)\\\\\\sin(120^\\circ)\\end{array} \\right]\n",
         "$$\n"
       ],
-      "id": "e9c7310e"
+      "id": "80327d21"
     },
     {
       "cell_type": "code",
@@ -133,7 +133,7 @@
         "\\vec{a}_1=\\left[\\begin{array}{c}5/2\\\\\\sqrt{3}/2\\end{array} \\right] \\quad \\text{y} \\quad \\vec{a}_2=\\left[\\begin{array}{c}3/2\\\\\\sqrt{3}/2\\end{array} \\right]\n",
         "$$\n"
       ],
-      "id": "144b758b"
+      "id": "db08e304"
     },
     {
       "cell_type": "code",
@@ -175,7 +175,7 @@
         "\n",
         "Calculemos el área de las diferentes opciones anteriores\n"
       ],
-      "id": "cc62a896"
+      "id": "9dedb183"
     },
     {
       "cell_type": "code",
@@ -211,7 +211,7 @@
         "A = array( [vec_a1,vec_a2] )\n",
         "print (\"Opción 4\", det(A))"
       ],
-      "id": "426349d5",
+      "id": "8a4ea2c5",
       "execution_count": null,
       "outputs": []
     }

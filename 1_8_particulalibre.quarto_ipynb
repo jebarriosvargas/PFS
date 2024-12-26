@@ -108,7 +108,7 @@
         "::: {.callout-note appearance=\"simple\" icon=false collapse=\"true\"}\n",
         "## Gráfica \n"
       ],
-      "id": "38e55444"
+      "id": "f09f699a"
     },
     {
       "cell_type": "code",
@@ -147,7 +147,7 @@
         "\n",
         "ax[1].set_xlabel('x (m)');"
       ],
-      "id": "97155262",
+      "id": "5f0ad45f",
       "execution_count": null,
       "outputs": []
     },
@@ -172,7 +172,7 @@
         "::: {.callout-note appearance=\"simple\" icon=false collapse=\"true\"}\n",
         "## Visualización ${\\rm Re}\\Psi$\n"
       ],
-      "id": "2cd35c0b"
+      "id": "911ac1c6"
     },
     {
       "cell_type": "code",
@@ -232,7 +232,7 @@
         "\n",
         "fig.show()"
       ],
-      "id": "6ee18dbe",
+      "id": "7b19b0aa",
       "execution_count": null,
       "outputs": []
     },
@@ -247,7 +247,7 @@
         "::: {.callout-note appearance=\"simple\" icon=false collapse=\"true\"}\n",
         "## Visualización ${\\rm Re}\\Psi$\n"
       ],
-      "id": "e45a3650"
+      "id": "1ee99c94"
     },
     {
       "cell_type": "code",
@@ -305,7 +305,7 @@
         "\n",
         "fig.show()"
       ],
-      "id": "ab02f6e5",
+      "id": "7a909363",
       "execution_count": null,
       "outputs": []
     },
@@ -321,7 +321,7 @@
         "::: {.callout-note appearance=\"simple\" icon=false collapse=\"true\"}\n",
         "## Viualización $({\\rm Re}\\Psi, {\\rm Im}\\Psi)$"
       ],
-      "id": "1e616af7"
+      "id": "6fa9dc66"
     },
     {
       "cell_type": "code",
@@ -387,7 +387,7 @@
         "\n",
         "fig.show()"
       ],
-      "id": "0e024a4f",
+      "id": "ac3046d0",
       "execution_count": null,
       "outputs": []
     },
@@ -419,7 +419,7 @@
         "::: {.callout-note appearance=\"simple\" icon=false collapse=\"true\"}\n",
         "## Viualización ${\\rm Re}\\Psi$ e ${\\rm Im}\\Psi$\n"
       ],
-      "id": "b422add3"
+      "id": "5fb97d4c"
     },
     {
       "cell_type": "code",
@@ -479,7 +479,7 @@
         "\n",
         "fig.show()"
       ],
-      "id": "ad96adb9",
+      "id": "71478ca4",
       "execution_count": null,
       "outputs": []
     },
@@ -489,7 +489,7 @@
       "source": [
         ":::"
       ],
-      "id": "0c456de3"
+      "id": "41c0d977"
     }
   ],
   "metadata": {

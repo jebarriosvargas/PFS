@@ -13,7 +13,7 @@ $$
 
 donde $k_{\rm B}=1.380649\times 10^{-23} {\rm J}\cdot {\rm K}^{-1}$ es la constante de Boltzmann y $R=8.31446261815324 {\rm J}\cdot {\rm K}^{-1}\cdot {\rm mol}^{-1}$ es la constante molar de los gases. 
 
-La ly de Doulong-Petit es válida para temperatura ambiente.
+La ley de Doulong-Petit es válida para temperatura ambiente.
 
 |Material|C/R|
 |---|---|
