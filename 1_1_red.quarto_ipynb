@@ -31,7 +31,7 @@
         "\n",
         "## En 1D\n"
       ],
-      "id": "311c4938"
+      "id": "cd99cca4"
     },
     {
       "cell_type": "code",
@@ -86,7 +86,7 @@
       "source": [
         "## En 2D\n"
       ],
-      "id": "932e069b"
+      "id": "6c32122f"
     },
     {
       "cell_type": "code",
@@ -152,7 +152,7 @@
       "source": [
         "## En 3D"
       ],
-      "id": "bb72289e"
+      "id": "cea6fc5c"
     },
     {
       "cell_type": "code",
@@ -220,7 +220,7 @@
         "Una red es un conjunto de puntos donde el entorno de cualquier punto es quivalente al entorno de cualquier otro.\n",
         ":::\n"
       ],
-      "id": "852a7209"
+      "id": "2b6b358d"
     }
   ],
   "metadata": {

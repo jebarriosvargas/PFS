@@ -33,7 +33,7 @@
         "\\vec{a}_1=\\left[\\begin{array}{c}1\\\\0\\end{array} \\right] \\quad \\text{y} \\quad \\vec{a}_2=\\left[\\begin{array}{c}\\cos(60^\\circ)\\\\\\sin(60^\\circ)\\end{array} \\right]\n",
         "$$\n"
       ],
-      "id": "03e45c1b"
+      "id": "4028fd4e"
     },
     {
       "cell_type": "code",
