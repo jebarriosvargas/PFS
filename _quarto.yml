@@ -35,6 +35,11 @@ book:
         - 3_1_electroneslibres.qmd
     - part: "U4. Magnetismo"
 format:
+  pdf:
+    include-in-header:
+      - text: |
+          \usepackage{xcolor}
+          \definecolor{magenta}{RGB}{255,0,144}
   html:
     theme: 
       light: minty

@@ -1,11 +1,10 @@
 # Partícula libre en una dimensión
 
 $$
-\definecolor{magenta}{RGB}{255,0,144}
+\newcommand{\ii}{{\rm i}}
 \newcommand{\cparentesis}[1]{ {\color{magenta} #1} }
 \newcommand{\iprn}{\cparentesis{(}}
 \newcommand{\fprn}{\cparentesis{)}}
-\newcommand{\ii}{{\rm i}}
 $$
 
 ::: {.callout-note appearance="simple" icon=false collapse="true"}
